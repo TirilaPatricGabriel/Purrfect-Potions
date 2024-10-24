@@ -12,9 +12,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        // Freeze X and Z rotation to keep the player upright
+        rb.freezeRotation = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    void Update()
+    // Use FixedUpdate for physics-based movement
+    void FixedUpdate()
     {
         // Input - horizontal & vertical
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -23,14 +28,17 @@ public class PlayerMovement : MonoBehaviour
         // Movement vector
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        // Modify sphere position using movement
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        // Apply force-based movement (physics simulation)
+        rb.AddForce(movement * speed);
+    }
 
-        // Check if space pressed and player grounded
+    void Update()
+    {
+        // Check if space is pressed and player is grounded (jumping)
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false; 
+            isGrounded = false;
         }
     }
 
