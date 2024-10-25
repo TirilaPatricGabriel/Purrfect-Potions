@@ -16,17 +16,15 @@ public class PlayerPickup : MonoBehaviour
 
     void Update()
     {
-        // Check for "E" key press
+        // E - key for holding and dropping item
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (heldPotion == null)
             {
-                // Try to pick up a potion
                 TryPickupPotion();
             }
             else
             {
-                // Drop the potion
                 DropPotion();
             }
         }
@@ -34,24 +32,24 @@ public class PlayerPickup : MonoBehaviour
 
     void TryPickupPotion()
     {
-        // Find all colliders within pickupRange
+        // All colliders within range
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickupRange);
 
         foreach (var collider in hitColliders)
         {
-            // Check if the object has the tag "potion"
+            // Check if object is potion
             if (collider.CompareTag("Potion"))
             {
-                // Pick up the potion
+                // Pick up
                 heldPotion = collider.gameObject;
                 heldPotion.transform.position = holdPosition.position;
-                heldPotion.transform.parent = holdPosition;  // Attach to hold position
+                heldPotion.transform.parent = holdPosition;  // Attach to hold position (obiect)
 
                 // Store the original layer and set to IgnorePickup layer
                 originalLayer = heldPotion.layer;
                 heldPotion.layer = LayerMask.NameToLayer("IgnorePickup");
 
-                // Disable potion's physics by making Rigidbody kinematic
+                // Disable physics of potion - kinematic
                 Rigidbody potionRb = heldPotion.GetComponent<Rigidbody>();
                 if (potionRb != null)
                 {
