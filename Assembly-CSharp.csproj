@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerPickup.cs" />
     <Compile Include="Assets\Scripts\SpawnerBehavior.cs" />
+    <Compile Include="Assets\Scripts\PlayerPlacePotion.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
