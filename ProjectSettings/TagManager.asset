@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Potion
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IgnorePickup
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
