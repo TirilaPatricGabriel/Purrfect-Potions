@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20f;  // speed
-    public float jumpForce = 12f;  // Force applied for jumping
-    private Rigidbody rb;  // Reference to the Rigidbody component
-    private bool isGrounded;  // Check if the player is on the ground
+    public float speed = 20f; 
+    public float jumpForce = 12f;  
+    private Rigidbody rb;  
+    private bool isGrounded;  
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        // Freeze X and Z rotation to keep the player upright
+        // Freeze X and Z - player upright
         rb.freezeRotation = true;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    // Use FixedUpdate for physics-based movement
+    // Physic movement
     void FixedUpdate()
     {
         // Input - horizontal & vertical
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         // Movement vector
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        // Apply force-based movement (physics simulation)
+        // Movement
         rb.AddForce(movement * speed);
     }
 
