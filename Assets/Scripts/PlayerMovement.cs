@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20f; 
-    public float jumpForce = 12f;  
-    private Rigidbody rb;  
-    private bool isGrounded;  
+    public float speed = 300f;
+    public float jumpForce = 12f;
+    private Rigidbody rb;
+    private bool isGrounded;
 
     void Start()
     {
@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    // Physic movement
     void FixedUpdate()
     {
         // Input - horizontal & vertical
@@ -26,11 +25,23 @@ public class PlayerMovement : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         // Movement vector
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized * speed;
+        
 
-        // Movement
-        rb.AddForce(movement * speed);
+
+        // Set velocity directly for precise movement without sliding
+        if (movement.magnitude > 0)
+        {
+            Vector3 newVelocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+            rb.velocity = newVelocity;
+        }
+        else
+        {
+            // Stop movement when there is no input
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
     }
+
 
     void Update()
     {
