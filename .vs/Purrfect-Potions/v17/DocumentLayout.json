@@ -1,10 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\tiril\\UnityProjects\\Purrfect-Potions\\",
+  "WorkspaceRootPath": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tiril\\UnityProjects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PlayerPotionHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|c:\\users\\tiril\\unity_projects\\purrfect-potions\\assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|c:\\users\\tiril\\unity_projects\\purrfect-potions\\assets\\scripts\\playerpotionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerpotionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +18,51 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\MainMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MainMenu.cs",
+              "ToolTip": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\MainMenu.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MainMenu.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAIA0wBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T16:03:16.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PlayerPotionHandler.cs",
-              "DocumentMoniker": "C:\\Users\\tiril\\UnityProjects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs",
+              "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerPotionHandler.cs",
-              "ToolTip": "C:\\Users\\tiril\\UnityProjects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs",
+              "ToolTip": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerPotionHandler.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBJwCEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-26T04:18:43.717Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }
