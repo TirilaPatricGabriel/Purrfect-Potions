@@ -13,6 +13,8 @@ TagManager:
   - Potion_5
   - Potion_6
   - Potion_7
+  - NPC
+  - Waypoint
   layers:
   - Default
   - TransparentFX

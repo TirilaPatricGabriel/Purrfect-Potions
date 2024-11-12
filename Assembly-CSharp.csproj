@@ -63,6 +63,7 @@
     <Compile Include="Assets\New Folder\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerPotionHandler.cs" />
+    <Compile Include="Assets\Scripts\NPCBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
