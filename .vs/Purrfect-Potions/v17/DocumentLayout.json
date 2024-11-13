@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npcbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|c:\\users\\tiril\\unity_projects\\purrfect-potions\\assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -55,8 +55,7 @@
               "RelativeToolTip": "Assets\\Scripts\\MainMenu.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAMwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T16:03:16.353Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T16:03:16.353Z"
             },
             {
               "$type": "Document",
