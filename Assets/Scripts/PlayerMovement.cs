@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 300f;
+    public float speed = 30f;
     public float jumpForce = 12f;
     private Rigidbody rb;
     private Animator animator;
@@ -15,7 +15,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>(); // Use GetComponentInChildren to search in children as well
+
+        // Verify if Animator component exists
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator component is missing on Player or its children.");
+        }
 
         // Freeze X and Z - keep player upright
         rb.freezeRotation = true;
@@ -36,7 +42,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 newVelocity = new Vector3(movement.x, rb.velocity.y, movement.z);
             rb.velocity = newVelocity;
-            animator.SetBool("isWalking", true); // Only set to walking if actually moving
+
+            if (animator != null) // Check if animator exists before using it
+            {
+                animator.SetBool("isWalking", true); // Only set to walking if actually moving
+            }
 
             // Rotate the player to face the direction of movement
             Quaternion targetRotation = Quaternion.LookRotation(movement);
@@ -46,7 +56,11 @@ public class PlayerMovement : MonoBehaviour
         {
             // Stop movement when there is no input
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
-            animator.SetBool("isWalking", false); // Set to idle when not moving
+
+            if (animator != null) // Check if animator exists before using it
+            {
+                animator.SetBool("isWalking", false); // Set to idle when not moving
+            }
         }
     }
 
