@@ -30,9 +30,27 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Input - horizontal & vertical
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        // Input for WASD only
+        float moveHorizontal = 0f;
+        float moveVertical = 0f;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveVertical = 1f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveVertical = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveHorizontal = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            moveHorizontal = 1f;
+        }
 
         // Movement vector
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized * speed;
