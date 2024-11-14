@@ -60,6 +60,7 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.49f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\PlayerMovement2.cs" />
     <Compile Include="Assets\New Folder\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerPotionHandler.cs" />
