@@ -7,7 +7,7 @@ public class PlayerPotionHandler : MonoBehaviour
     public float interactionRange = 2.0f;
     public Transform holdPosition;
     private GameObject heldPotion;
-    private int originalLayer;              // Original layer of potion before player gets it
+    private int originalLayer;             
     private bool canPickup = true;          // Cooldown for potion pickup
 
     // Prefabs for combinations
@@ -17,9 +17,9 @@ public class PlayerPotionHandler : MonoBehaviour
     public GameObject potion_7Prefab;
 
     // Input key for this player
-    public KeyCode interactKey = KeyCode.E; // Default to 'E' (can be 'P' for the other cat)
+    public KeyCode interactKey = KeyCode.E; // Default to 'E'
 
-    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); // Tracks potions already picked up
+    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); // potions already picked up
 
     void Update()
     {
