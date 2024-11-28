@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerPotionHandler : MonoBehaviour
 {
-    public float interactionRange = 2.0f;  
-    public Transform holdPosition;          
-    private GameObject heldPotion;          
-    private int originalLayer;              // Original layer of potion before player gets it
+    public float interactionRange = 2.0f;
+    public Transform holdPosition;
+    private GameObject heldPotion;
+    private int originalLayer;             
     private bool canPickup = true;          // Cooldown for potion pickup
 
     // Prefabs for combinations
@@ -16,9 +16,14 @@ public class PlayerPotionHandler : MonoBehaviour
     public GameObject potion_6Prefab;
     public GameObject potion_7Prefab;
 
+    // Input key for this player
+    public KeyCode interactKey = KeyCode.E; // Default to 'E'
+
+    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); // potions already picked up
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(interactKey))
         {
             if (heldPotion == null && canPickup)
             {
@@ -26,20 +31,18 @@ public class PlayerPotionHandler : MonoBehaviour
             }
             else if (heldPotion != null)
             {
-                PlacePotionOnTableOrCombine(); 
+                PlacePotionOnTableOrCombine();
             }
         }
     }
 
     void TryPickupPotionOrTablePotion()
     {
-        // Find all colliders within range
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);
         Transform closestPotionPlace = null;
         float closestDistance = Mathf.Infinity;
         GameObject potionOnTable = null;
 
-        // Try to find nearest table with potion
         foreach (var collider in hitColliders)
         {
             if (collider.CompareTag("Table"))
@@ -54,16 +57,12 @@ public class PlayerPotionHandler : MonoBehaviour
                         closestDistance = distance;
                         closestPotionPlace = potionPlace;
 
-                        // Check if a potion is on the table
                         foreach (Transform child in potionPlace)
                         {
-                            if (child.CompareTag("Potion") ||
-                                child.CompareTag("Potion_2") ||
-                                child.CompareTag("Potion_3") ||
-                                child.CompareTag("Potion_4") ||
-                                child.CompareTag("Potion_5") ||
-                                child.CompareTag("Potion_6") ||
-                                child.CompareTag("Potion_7"))
+                            if ((child.CompareTag("Potion") || child.CompareTag("Potion_2") ||
+                                child.CompareTag("Potion_3") || child.CompareTag("Potion_4") ||
+                                child.CompareTag("Potion_5") || child.CompareTag("Potion_6") ||
+                                child.CompareTag("Potion_7")) && !takenPotions.Contains(child.gameObject))
                             {
                                 potionOnTable = child.gameObject;
                                 break;
@@ -74,7 +73,6 @@ public class PlayerPotionHandler : MonoBehaviour
             }
         }
 
-        // If a potion is found on the table, pick it up
         if (potionOnTable != null)
         {
             Debug.Log("Picking up potion from the table: " + potionOnTable.name);
@@ -82,28 +80,21 @@ public class PlayerPotionHandler : MonoBehaviour
         }
         else
         {
-            // Try to pick up a potion from the world
             TryPickupPotion();
         }
     }
 
     void TryPickupPotion()
     {
-        // Find all colliders within interactionRange
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);
 
         foreach (var collider in hitColliders)
         {
-            // Check for any potions
-            if (collider.CompareTag("Potion") ||
-                collider.CompareTag("Potion_2") ||
-                collider.CompareTag("Potion_3") ||
-                collider.CompareTag("Potion_4") ||
-                collider.CompareTag("Potion_5") ||
-                collider.CompareTag("Potion_6") ||
-                collider.CompareTag("Potion_7"))
+            if ((collider.CompareTag("Potion") || collider.CompareTag("Potion_2") ||
+                collider.CompareTag("Potion_3") || collider.CompareTag("Potion_4") ||
+                collider.CompareTag("Potion_5") || collider.CompareTag("Potion_6") ||
+                collider.CompareTag("Potion_7")) && !takenPotions.Contains(collider.gameObject))
             {
-                // Pick up
                 PickUpPotion(collider.gameObject);
                 break;
             }
@@ -114,40 +105,39 @@ public class PlayerPotionHandler : MonoBehaviour
     {
         heldPotion = potion;
         heldPotion.transform.position = holdPosition.position;
-        heldPotion.transform.SetParent(holdPosition, true); // With maintain world position
+        heldPotion.transform.SetParent(holdPosition, true); // Keep world position
 
         originalLayer = heldPotion.layer;
         heldPotion.layer = LayerMask.NameToLayer("IgnorePickup");
 
-        // Disable potion physics
         Rigidbody potionRb = heldPotion.GetComponent<Rigidbody>();
         if (potionRb != null)
         {
             potionRb.isKinematic = true;
         }
 
+        takenPotions.Add(heldPotion); // Mark the potion as taken
         Debug.Log("Picked up potion: " + heldPotion.name);
-        canPickup = false;  // Prevent further pickups until reset
+
+        canPickup = false;  // Prevent immediate re-pickup
         StartCoroutine(ResetPickupCooldown());
     }
 
     private IEnumerator ResetPickupCooldown()
     {
-        yield return new WaitForSeconds(1f); 
-        canPickup = true; 
+        yield return new WaitForSeconds(1f);
+        canPickup = true;
     }
 
     void PlacePotionOnTableOrCombine()
     {
-        // Find all colliders within interactionRange
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);
         Transform closestPotionPlace = null;
         float closestDistance = Mathf.Infinity;
 
         bool tableFound = false;
-        GameObject potionOnTable = null;  // Store potion found on the table
+        GameObject potionOnTable = null;
 
-        // Find the closest table 
         foreach (var collider in hitColliders)
         {
             if (collider.CompareTag("Table"))
@@ -163,19 +153,15 @@ public class PlayerPotionHandler : MonoBehaviour
                         closestPotionPlace = potionPlace;
                         tableFound = true;
 
-                        // Check for potions already on the table
                         foreach (Transform child in potionPlace)
                         {
-                            if (child.CompareTag("Potion") ||
-                                child.CompareTag("Potion_2") ||
-                                child.CompareTag("Potion_3") ||
-                                child.CompareTag("Potion_4") ||
-                                child.CompareTag("Potion_5") ||
-                                child.CompareTag("Potion_6") ||
+                            if (child.CompareTag("Potion") || child.CompareTag("Potion_2") ||
+                                child.CompareTag("Potion_3") || child.CompareTag("Potion_4") ||
+                                child.CompareTag("Potion_5") || child.CompareTag("Potion_6") ||
                                 child.CompareTag("Potion_7"))
                             {
                                 potionOnTable = child.gameObject;
-                                break;  
+                                break;
                             }
                         }
                     }
@@ -205,9 +191,6 @@ public class PlayerPotionHandler : MonoBehaviour
         string heldTag = heldPotion.tag;
         string tableTag = potionOnTable.tag;
         GameObject newPotion = null;
-
-        Debug.Log(heldTag);
-        Debug.Log(tableTag);
 
         if ((string.Equals(heldTag, "Potion") && string.Equals(tableTag, "Potion_2")) ||
             (string.Equals(heldTag, "Potion_2") && string.Equals(tableTag, "Potion")))
@@ -240,14 +223,12 @@ public class PlayerPotionHandler : MonoBehaviour
             return;
         }
 
-        // Destroy the original potions
-        Destroy(heldPotion);  
-        Destroy(potionOnTable);  
+        Destroy(heldPotion);
+        Destroy(potionOnTable);
 
-        // Place the new potion on the table and parent it
-        newPotion.transform.position = potionPlace.position;  
-        newPotion.transform.rotation = potionPlace.rotation;  
-        newPotion.transform.SetParent(potionPlace, true); 
+        newPotion.transform.position = potionPlace.position;
+        newPotion.transform.rotation = potionPlace.rotation;
+        newPotion.transform.SetParent(potionPlace, true);
     }
 
     void PlacePotionOnTable(Transform closestPotionPlace)
@@ -255,19 +236,15 @@ public class PlayerPotionHandler : MonoBehaviour
         heldPotion.transform.position = closestPotionPlace.position;
         heldPotion.transform.rotation = closestPotionPlace.rotation;
 
-        // Set the potion as a child of the PotionPlace
-        heldPotion.transform.SetParent(closestPotionPlace, true); 
+        heldPotion.transform.SetParent(closestPotionPlace, true);
 
-        // Reset rigidbody properties if needed
         Rigidbody potionRb = heldPotion.GetComponent<Rigidbody>();
         if (potionRb != null)
         {
-            potionRb.isKinematic = false;  // Enable physics
+            potionRb.isKinematic = false;
         }
 
-        Debug.Log("Placed " + heldPotion.name + " under " + closestPotionPlace.name);
-
-        DropPotion(1);  // Call DropPotion to reset heldPotion bool
+        DropPotion(1);
     }
 
     void DropPotion(int dontResetParent)
@@ -276,19 +253,19 @@ public class PlayerPotionHandler : MonoBehaviour
         {
             if (dontResetParent == 0)
             {
-                heldPotion.transform.parent = null; 
+                heldPotion.transform.parent = null;
             }
             Rigidbody potionRb = heldPotion.GetComponent<Rigidbody>();
             if (potionRb != null)
             {
-                potionRb.isKinematic = false;  // Enable physics
+                potionRb.isKinematic = false;
             }
 
-            // Reset layer to original
             heldPotion.layer = originalLayer;
 
+            takenPotions.Remove(heldPotion); // Mark the potion as no longer taken
             Debug.Log("Dropped potion: " + heldPotion.name);
-            heldPotion = null; // Clear held potion reference
+            heldPotion = null;
         }
     }
 }
