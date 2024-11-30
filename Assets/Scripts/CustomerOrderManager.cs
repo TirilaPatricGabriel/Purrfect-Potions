@@ -14,14 +14,10 @@ public class CustomerOrderManager : MonoBehaviour
     void Start()
     {
         CustomerOrderManager customerOrderManager = GetComponent<CustomerOrderManager>();
-        customerOrderManager.AddOrder("Potion + Herb");
-        customerOrderManager.AddOrder("Elixir + Crystal");
-        customerOrderManager.AddOrder("Scroll + Ink");
-        customerOrderManager.AddOrder("Bonus Order!");
     }
 
 
-    // Add a new order to the list
+    // add a new order to the list
 
     public void AddOrder(string orderText)
     {
@@ -52,6 +48,16 @@ public class CustomerOrderManager : MonoBehaviour
             GameObject oldestOrder = activeOrders[0];
             activeOrders.RemoveAt(0);
             Destroy(oldestOrder);
+        }
+    }
+
+    public void RemoveLastOrder()
+    {
+        if (activeOrders.Count > 0)
+        {
+            GameObject lastOrder = activeOrders[activeOrders.Count - 1];
+            activeOrders.RemoveAt(activeOrders.Count - 1);
+            Destroy(lastOrder);
         }
     }
 
