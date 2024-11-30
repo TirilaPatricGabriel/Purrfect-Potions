@@ -3,11 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|c:\\users\\tiril\\unity_projects\\purrfect-potions\\assets\\scripts\\customerordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\customerordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|c:\\users\\tiril\\unity_projects\\purrfect-potions\\assets\\scripts\\playerpotionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\assets\\scripts\\playerpotionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerpotionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,12 +11,16 @@
       "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\leveltimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\assets\\scripts\\npcbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npcbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|c:\\users\\tiril\\unity_projects\\purrfect-potions\\assets\\scripts\\customerordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\customerordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\assets\\scripts\\npcbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npcbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,20 +42,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CustomerOrderManager.cs",
               "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\CustomerOrderManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CustomerOrderManager.cs",
               "ToolTip": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\CustomerOrderManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\CustomerOrderManager.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwCsAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-26T17:40:06.956Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "LevelTimer.cs",
               "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\LevelTimer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LevelTimer.cs",
@@ -63,23 +63,25 @@
               "RelativeToolTip": "Assets\\Scripts\\LevelTimer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T13:29:00.098Z"
+              "WhenOpened": "2024-11-17T13:29:00.098Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "NPCBehavior.cs",
               "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\NPCBehavior.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\NPCBehavior.cs",
               "ToolTip": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\NPCBehavior.cs",
               "RelativeToolTip": "Assets\\Scripts\\NPCBehavior.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAwwKIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T17:45:08.402Z"
+              "WhenOpened": "2024-11-12T17:45:08.402Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "MainMenu.cs",
               "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\MainMenu.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MainMenu.cs",
@@ -87,17 +89,18 @@
               "RelativeToolTip": "Assets\\Scripts\\MainMenu.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAMwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T16:03:16.353Z"
+              "WhenOpened": "2024-11-12T16:03:16.353Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "PlayerPotionHandler.cs",
               "DocumentMoniker": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerPotionHandler.cs",
               "ToolTip": "C:\\Users\\tiril\\Unity_Projects\\Purrfect-Potions\\Assets\\Scripts\\PlayerPotionHandler.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerPotionHandler.cs",
-              "ViewState": "AgIAAPQAAAAAAAAAAADwvwgBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALkAAAAAAAAAAAAswMMAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-26T04:18:43.717Z",
               "EditorCaption": ""

@@ -1,62 +1,166 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCBehavior : MonoBehaviour
 {
-    public float speed = 5f; // Movement speed
-    private List<GameObject> waypoints; // List of waypoints
-    private GameObject currentTarget; // Current target waypoint
-    private HashSet<GameObject> visitedWaypoints; // Keep track of visited waypoints
+    public float speed = 5f; 
+    private List<GameObject> waypoints; 
+    private GameObject lastWaypoint; 
+    private GameObject firstWaypoint; 
+    private static GameObject npcAtLastWaypoint = null; 
+    private static bool isLastWaypointOccupied = false; 
+
+    private int currentWaypointIndex = 0; 
+    private bool movingToLastWaypoint = true; 
+    private bool returningToFirstWaypoint = false; 
+
+    public CustomerOrderManager customerOrderManager;
+
+    private static Dictionary<string, string> potionRecipes = new Dictionary<string, string>
+    {
+        { "Potion+Potion_2", "Potion_4" },
+        { "Potion+Potion_3", "Potion_5" },
+        { "Potion_2+Potion_3", "Potion_6" },
+        { "Potion_4+Potion_6", "Potion_7" }
+    };
 
     void Start()
     {
-        // Find all game objects tagged as "Waypoint" and store them in a list
+        // sort all waypoints
         waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("Waypoint"));
-        visitedWaypoints = new HashSet<GameObject>();
+        waypoints.Sort((a, b) => a.transform.position.z.CompareTo(b.transform.position.z)); // Sort by Z axis
 
-        // Find and set the initial target waypoint
-        SetNextTarget();
+        firstWaypoint = GameObject.FindGameObjectWithTag("FirstWaypoint");
+        lastWaypoint = GameObject.FindGameObjectWithTag("LastWaypoint");
+
+        // make sure FirstWaypoint is at the start of the list
+        if (firstWaypoint != null && waypoints[0] != firstWaypoint)
+        {
+            waypoints.Remove(firstWaypoint);
+            waypoints.Insert(0, firstWaypoint);
+        }
+
+        // make sure LastWaypoint is at the end of the list
+        if (lastWaypoint != null && waypoints[waypoints.Count - 1] != lastWaypoint)
+        {
+            waypoints.Remove(lastWaypoint);
+            waypoints.Add(lastWaypoint);
+        }
     }
 
     void Update()
     {
-        if (currentTarget != null)
+        // freeze only npcs moving towards last waypoint
+        if (movingToLastWaypoint && isLastWaypointOccupied && npcAtLastWaypoint != gameObject)
         {
-            // Move towards the current target waypoint
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, step);
+            return;
+        }
 
-            // Check if the NPC has reached the current target waypoint
-            if (Vector3.Distance(transform.position, currentTarget.transform.position) < 0.1f)
+        if (movingToLastWaypoint)
+        {
+            if (!IsIndexValid(currentWaypointIndex)) return;
+
+            MoveTowardsWaypoint(currentWaypointIndex);
+
+            // check if lastwaypoint reached
+            if (waypoints[currentWaypointIndex] == lastWaypoint &&
+                Vector3.Distance(transform.position, lastWaypoint.transform.position) < 0.1f)
             {
-                // Mark the waypoint as visited and set the next target
-                visitedWaypoints.Add(currentTarget);
-                SetNextTarget();
+                if (!isLastWaypointOccupied)
+                {
+                    // occupy last waypoint
+                    npcAtLastWaypoint = gameObject;
+                    isLastWaypointOccupied = true;
+
+                    // add order
+                    AddRandomOrder();
+
+                    StartCoroutine(WaitAtLastWaypoint());
+                }
+            }
+        }
+        else if (returningToFirstWaypoint)
+        {
+            MoveTowardsFirstWaypoint();
+
+            // check if firstwaypoint reached and make customer inactive if so
+            if (Vector3.Distance(transform.position, firstWaypoint.transform.position) < 0.1f)
+            {
+                gameObject.SetActive(false);
             }
         }
     }
 
-    void SetNextTarget()
+    private void AddRandomOrder()
     {
-        GameObject nearestWaypoint = null;
-        float nearestDistance = Mathf.Infinity;
+        if (customerOrderManager == null) return;
 
-        // Loop through all waypoints to find the nearest unvisited one
-        foreach (GameObject waypoint in waypoints)
+        List<KeyValuePair<string, string>> recipes = new List<KeyValuePair<string, string>>(potionRecipes);
+        KeyValuePair<string, string> randomRecipe = recipes[Random.Range(0, recipes.Count)];
+
+        string[] components = randomRecipe.Key.Split('+');
+        string result = randomRecipe.Value;
+
+        string orderText = $"{result} ({components[0]} + {components[1]})";
+
+        customerOrderManager.AddOrder(orderText);
+    }
+
+    void MoveTowardsWaypoint(int waypointIndex)
+    {
+        if (!IsIndexValid(waypointIndex)) return;
+
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, step);
+
+        // update index if npc reaches waypoint
+        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 0.1f)
         {
-            if (!visitedWaypoints.Contains(waypoint))
+            if (movingToLastWaypoint)
             {
-                float distance = Vector3.Distance(transform.position, waypoint.transform.position);
-                if (distance < nearestDistance)
-                {
-                    nearestDistance = distance;
-                    nearestWaypoint = waypoint;
-                }
+                currentWaypointIndex = Mathf.Min(currentWaypointIndex + 1, waypoints.Count - 1);
+            }
+            else
+            {
+                currentWaypointIndex = Mathf.Max(currentWaypointIndex - 1, 0);
             }
         }
+    }
 
-        // Set the nearest unvisited waypoint as the new target
-        currentTarget = nearestWaypoint;
+    void MoveTowardsFirstWaypoint()
+    {
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, firstWaypoint.transform.position, step);
+    }
+
+    IEnumerator WaitAtLastWaypoint()
+    {
+        yield return new WaitForSeconds(3f);
+
+        OrderOfNPCCompleted();
+    }
+
+    public void OrderOfNPCCompleted()
+    {
+        // free lastwaypoint + go to first waypoint + remove order
+        if (npcAtLastWaypoint == gameObject)
+        {
+            isLastWaypointOccupied = false;
+            npcAtLastWaypoint = null;
+
+            if (customerOrderManager != null)
+            {
+                customerOrderManager.RemoveLastOrder();
+            }
+
+            returningToFirstWaypoint = true;
+            movingToLastWaypoint = false;
+        }
+    }
+
+    private bool IsIndexValid(int index)
+    {
+        return index >= 0 && index < waypoints.Count;
     }
 }
