@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class NPCBehavior : MonoBehaviour
 {
-    public float speed = 5f; 
-    private List<GameObject> waypoints; 
-    private GameObject lastWaypoint; 
-    private GameObject firstWaypoint; 
-    private static GameObject npcAtLastWaypoint = null; 
-    private static bool isLastWaypointOccupied = false; 
+    public float speed = 5f;
+    private List<GameObject> waypoints;
+    private GameObject lastWaypoint;
+    private GameObject firstWaypoint;
+    private static GameObject npcAtLastWaypoint = null;
+    private static bool isLastWaypointOccupied = false;
 
-    private int currentWaypointIndex = 0; 
-    private bool movingToLastWaypoint = true; 
-    private bool returningToFirstWaypoint = false; 
+    private int currentWaypointIndex = 0;
+    private bool movingToLastWaypoint = true;
+    private bool returningToFirstWaypoint = false;
+    private Animator animator;
 
     public CustomerOrderManager customerOrderManager;
 
@@ -25,35 +26,43 @@ public class NPCBehavior : MonoBehaviour
         { "Potion_4+Potion_6", "Potion_7" }
     };
 
+    private Quaternion lastRotation; // Variabilă pentru a stoca ultima rotație a NPC-ului
+
     void Start()
     {
-        // sort all waypoints
+        animator = GetComponent<Animator>();
+
+        // Sortăm toate waypoint-urile
         waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("Waypoint"));
-        waypoints.Sort((a, b) => a.transform.position.z.CompareTo(b.transform.position.z)); // Sort by Z axis
+        waypoints.Sort((a, b) => a.transform.position.z.CompareTo(b.transform.position.z)); // Sortare după axa Z
 
         firstWaypoint = GameObject.FindGameObjectWithTag("FirstWaypoint");
         lastWaypoint = GameObject.FindGameObjectWithTag("LastWaypoint");
 
-        // make sure FirstWaypoint is at the start of the list
+        // Asigurăm că FirstWaypoint este la începutul listei
         if (firstWaypoint != null && waypoints[0] != firstWaypoint)
         {
             waypoints.Remove(firstWaypoint);
             waypoints.Insert(0, firstWaypoint);
         }
 
-        // make sure LastWaypoint is at the end of the list
+        // Asigurăm că LastWaypoint este la sfârșitul listei
         if (lastWaypoint != null && waypoints[waypoints.Count - 1] != lastWaypoint)
         {
             waypoints.Remove(lastWaypoint);
             waypoints.Add(lastWaypoint);
         }
+
+        // Setăm rotația inițială
+        lastRotation = transform.rotation;
     }
 
     void Update()
     {
-        // freeze only npcs moving towards last waypoint
+        // Freeze doar pentru NPC-urile care merg spre ultimul waypoint
         if (movingToLastWaypoint && isLastWaypointOccupied && npcAtLastWaypoint != gameObject)
         {
+            animator.SetBool("isWalking", false); // Oprește animația
             return;
         }
 
@@ -63,19 +72,18 @@ public class NPCBehavior : MonoBehaviour
 
             MoveTowardsWaypoint(currentWaypointIndex);
 
-            // check if lastwaypoint reached
+            // Verificăm dacă s-a ajuns la ultimul waypoint
             if (waypoints[currentWaypointIndex] == lastWaypoint &&
                 Vector3.Distance(transform.position, lastWaypoint.transform.position) < 0.1f)
             {
                 if (!isLastWaypointOccupied)
                 {
-                    // occupy last waypoint
+                    // Ocupăm ultimul waypoint
                     npcAtLastWaypoint = gameObject;
                     isLastWaypointOccupied = true;
 
-                    // add order
+                    // Adaugăm o comandă
                     AddRandomOrder();
-
                     StartCoroutine(WaitAtLastWaypoint());
                 }
             }
@@ -84,7 +92,7 @@ public class NPCBehavior : MonoBehaviour
         {
             MoveTowardsFirstWaypoint();
 
-            // check if firstwaypoint reached and make customer inactive if so
+            // Verificăm dacă s-a ajuns la primul waypoint și dezactivăm NPC-ul
             if (Vector3.Distance(transform.position, firstWaypoint.transform.position) < 0.1f)
             {
                 gameObject.SetActive(false);
@@ -107,15 +115,40 @@ public class NPCBehavior : MonoBehaviour
         customerOrderManager.AddOrder(orderText);
     }
 
+    void RotateTowards(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+
+        // Actualizează rotația doar dacă există o direcție validă
+        if (direction.magnitude > 0.1f)
+        {
+            lastRotation = Quaternion.LookRotation(direction); // Actualizează rotația dorită
+            transform.rotation = Quaternion.Slerp(transform.rotation, lastRotation, Time.deltaTime * 10f);
+        }
+    }
+
+
     void MoveTowardsWaypoint(int waypointIndex)
     {
         if (!IsIndexValid(waypointIndex)) return;
 
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, step);
+        Vector3 targetPosition = waypoints[waypointIndex].transform.position;
 
-        // update index if npc reaches waypoint
-        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 0.1f)
+        // Mișcă NPC-ul spre destinație
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+
+        bool isMoving = Vector3.Distance(transform.position, targetPosition) > 0.1f;
+        animator.SetBool("isWalking", isMoving);
+
+        if (isMoving)
+        {
+            RotateTowards(targetPosition); // Rotim NPC-ul doar dacă se mișcă
+        }
+        
+
+        // Dacă ajunge la waypoint, trece la următorul
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             if (movingToLastWaypoint)
             {
@@ -125,25 +158,40 @@ public class NPCBehavior : MonoBehaviour
             {
                 currentWaypointIndex = Mathf.Max(currentWaypointIndex - 1, 0);
             }
+
+            animator.SetBool("isWalking", false); // Oprește animația
         }
     }
+
 
     void MoveTowardsFirstWaypoint()
     {
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, firstWaypoint.transform.position, step);
+        Vector3 targetPosition = firstWaypoint.transform.position;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+
+        bool isMoving = Vector3.Distance(transform.position, targetPosition) > 0.1f;
+        animator.SetBool("isWalking", isMoving);
+
+        if (isMoving)
+        {
+            RotateTowards(targetPosition);
+            lastRotation = transform.rotation; // Salvează rotația curentă când NPC-ul se mișcă
+        }
+      
     }
 
     IEnumerator WaitAtLastWaypoint()
     {
         yield return new WaitForSeconds(3f);
+        animator.SetBool("isWalking", false); // Oprește animația
 
         OrderOfNPCCompleted();
     }
 
     public void OrderOfNPCCompleted()
     {
-        // free lastwaypoint + go to first waypoint + remove order
+        // Eliberăm ultimul waypoint și revenim la primul
         if (npcAtLastWaypoint == gameObject)
         {
             isLastWaypointOccupied = false;
