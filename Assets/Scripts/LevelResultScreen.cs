@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -9,6 +10,16 @@ public class LevelResultScreen : MonoBehaviour
 {
     public TextMeshProUGUI gradeText;
     public Image[] stars;
+
+    // Buttons
+    public Button nextLevelButton;
+    public Button resetLevelButton;
+    public Button quitToMainMenuButton;
+
+    void Start()
+    {
+        InitializeButtons();
+    }
 
     public void ShowGradeAndStars(float grade)
     {
@@ -40,6 +51,51 @@ public class LevelResultScreen : MonoBehaviour
         else if (grade >= 3.0f) return 2;
         else if (grade >= 0f) return 1;
         else return 0;
+    }
+
+    public void OnNextLevelButtonClicked()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No next level found, returning to main menu.");
+            SceneManager.LoadScene(0);  
+        }
+    }
+
+    public void OnResetLevelButtonClicked()
+    {
+        // Reload the current level
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void OnQuitToMainMenuButtonClicked()
+    {
+        // Load the main menu scene (assuming it's the first scene)
+        SceneManager.LoadScene(0);
+    }
+
+    public void InitializeButtons()
+    {
+        if (nextLevelButton != null)
+        {
+            nextLevelButton.onClick.AddListener(OnNextLevelButtonClicked);
+        }
+        if (resetLevelButton != null)
+        {
+            resetLevelButton.onClick.AddListener(OnResetLevelButtonClicked);
+        }
+        if (quitToMainMenuButton != null)
+        {
+            quitToMainMenuButton.onClick.AddListener(OnQuitToMainMenuButtonClicked);
+        }
     }
 
 }

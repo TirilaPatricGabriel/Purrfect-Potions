@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|d:\\facultate\\unity\\purrfectpotions\\purrfect-potions\\assets\\scripts\\levelcompletedscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelcompletedscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\assets\\scripts\\leveltimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\leveltimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|d:\\facultate\\unity\\purrfectpotions\\purrfect-potions\\assets\\scripts\\levelresultscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelresultscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5702F78-05D7-EF5B-0878-C6CC1906E18B}|Assembly-CSharp.csproj|D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\assets\\scripts\\customerordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,19 +34,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LevelCompletedScreen.cs",
-              "DocumentMoniker": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\Assets\\Scripts\\LevelCompletedScreen.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\LevelCompletedScreen.cs",
-              "ToolTip": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\Assets\\Scripts\\LevelCompletedScreen.cs",
-              "RelativeToolTip": "Assets\\Scripts\\LevelCompletedScreen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "LevelResultScreen.cs",
+              "DocumentMoniker": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\Assets\\Scripts\\LevelResultScreen.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LevelResultScreen.cs",
+              "ToolTip": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\Assets\\Scripts\\LevelResultScreen.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LevelResultScreen.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T11:58:58.493Z",
+              "WhenOpened": "2024-12-04T13:35:55.821Z",
               "EditorCaption": ""
             },
             {
@@ -59,17 +59,18 @@
               "RelativeToolTip": "Assets\\Scripts\\CustomerOrderManager.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAYwCsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T17:40:06.956Z"
+              "WhenOpened": "2024-11-26T17:40:06.956Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LevelTimer.cs",
               "DocumentMoniker": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\Assets\\Scripts\\LevelTimer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LevelTimer.cs",
               "ToolTip": "D:\\facultate\\Unity\\PurrfectPotions\\Purrfect-Potions\\Assets\\Scripts\\LevelTimer.cs",
               "RelativeToolTip": "Assets\\Scripts\\LevelTimer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-17T13:29:00.098Z",
               "EditorCaption": ""
