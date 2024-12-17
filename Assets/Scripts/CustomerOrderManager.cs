@@ -18,7 +18,6 @@ public class CustomerOrderManager : MonoBehaviour
 
 
     // add a new order to the list
-
     public void AddOrder(string orderText)
     {
         if (activeOrders.Count >= MaxOrders)
@@ -31,7 +30,7 @@ public class CustomerOrderManager : MonoBehaviour
         TextMeshProUGUI orderTextComponent = newOrderBox.GetComponentInChildren<TextMeshProUGUI>();
         if (orderTextComponent == null)
         {
-            Debug.LogError("No TextMeshProUGUI component found in OrderBox prefab!");
+            Debug.LogError("ERROR no ordertextcomponent!");
             return;
         }
 

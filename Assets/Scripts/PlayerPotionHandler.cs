@@ -16,10 +16,10 @@ public class PlayerPotionHandler : MonoBehaviour
     public GameObject potion_6Prefab;
     public GameObject potion_7Prefab;
 
-    // Input key for this player
-    public KeyCode interactKey = KeyCode.E; // Default to 'E'
+    // Input key for THIS player
+    public KeyCode interactKey = KeyCode.E; // default will be E
 
-    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); // potions already picked up
+    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); // all potions already picked up
 
     void Update()
     {
@@ -105,21 +105,22 @@ public class PlayerPotionHandler : MonoBehaviour
     {
         heldPotion = potion;
         heldPotion.transform.position = holdPosition.position;
-        heldPotion.transform.SetParent(holdPosition, true); // Keep world position
+        heldPotion.transform.SetParent(holdPosition, true);
 
         originalLayer = heldPotion.layer;
         heldPotion.layer = LayerMask.NameToLayer("IgnorePickup");
 
+        // disable phys
         Rigidbody potionRb = heldPotion.GetComponent<Rigidbody>();
         if (potionRb != null)
         {
             potionRb.isKinematic = true;
         }
 
-        takenPotions.Add(heldPotion); // Mark the potion as taken
+        takenPotions.Add(heldPotion); // mark as taken
         Debug.Log("Picked up potion: " + heldPotion.name);
 
-        canPickup = false;  // Prevent immediate re-pickup
+        canPickup = false;  // prevent another pickup
         StartCoroutine(ResetPickupCooldown());
     }
 
