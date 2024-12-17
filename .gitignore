@@ -2,6 +2,8 @@
 
 # Ignore meta files for VSCode
 .vscode/
+.vs/
+*.vsidx
 
 # Unity generated files
 [Ll]ibrary/

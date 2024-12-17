@@ -9,28 +9,27 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
     private bool isGrounded;
-    private float movementThreshold = 0.1f; // Minimum movement to trigger walking
-    private float rotationSpeed = 10f; // Speed of rotation to match the movement direction
+    private float movementThreshold = 0.1f;
+    private float rotationSpeed = 10f; 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>(); // Use GetComponentInChildren to search in children as well
+        animator = GetComponentInChildren<Animator>(); 
 
-        // Verify if Animator component exists
         if (animator == null)
         {
-            Debug.LogWarning("Animator component is missing on Player or its children.");
+            Debug.LogWarning("Animator component missing.");
         }
 
-        // Freeze X and Z - keep player upright
+        // freeze X and Z 
         rb.freezeRotation = true;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     void FixedUpdate()
     {
-        // Input for WASD only
+        // WASD
         float moveHorizontal = 0f;
         float moveVertical = 0f;
 
@@ -52,39 +51,37 @@ public class PlayerMovement : MonoBehaviour
             moveHorizontal = 1f;
         }
 
-        // Movement vector
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized * speed;
 
-        // Set velocity directly for precise movement without sliding
         if (movement.magnitude > movementThreshold)
         {
             Vector3 newVelocity = new Vector3(movement.x, rb.velocity.y, movement.z);
             rb.velocity = newVelocity;
 
-            if (animator != null) // Check if animator exists before using it
+            if (animator != null)
             {
-                animator.SetBool("isWalking", true); // Only set to walking if actually moving
+                animator.SetBool("isWalking", true);
             }
 
-            // Rotate the player to face the direction of movement
+            // rotation
             Quaternion targetRotation = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
         else
         {
-            // Stop movement when there is no input
+            // stop movement when there is no input
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
 
-            if (animator != null) // Check if animator exists before using it
+            if (animator != null) 
             {
-                animator.SetBool("isWalking", false); // Set to idle when not moving
+                animator.SetBool("isWalking", false); 
             }
         }
     }
 
     void Update()
     {
-        // Check if space is pressed and player is grounded (jumping)
+        // jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
