@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class NPCBehavior : MonoBehaviour
 {
@@ -20,7 +22,11 @@ public class NPCBehavior : MonoBehaviour
     private Animator animator;
 
     public UIManager uiManager;
-    public float totalMoney = 0f;
+
+    // anger
+    private float waitTime = 0f;
+    private const float angerThreshold = 10f; // 10 sec
+    private const float angerPenalty = 10f; // $10
 
     public CustomerOrderManager customerOrderManager;
 
@@ -125,6 +131,16 @@ public class NPCBehavior : MonoBehaviour
                 {
                     HandleOrderPlacement();
                 }
+
+                if (Vector3.Distance(transform.position, currentLastWaypoint.transform.position) < 0.1f)
+                {
+                    waitTime += Time.deltaTime;
+                    Debug.Log("WAIT TIME:" + waitTime);
+                    if (waitTime >= angerThreshold)
+                    {
+                        CancelOrder();
+                    }
+                }
             }
         }
         else if (returningToFirstWaypoint)
@@ -215,24 +231,13 @@ public class NPCBehavior : MonoBehaviour
         completedOrders.Add(new CompletedOrder(orderText, price));  
         Debug.Log($"Order Completed: {orderText} | Price: {price}");
 
-        PrintCompletedOrdersAndTotalMoney();
-    }
-
-    private void PrintCompletedOrdersAndTotalMoney()
-    {
-        totalMoney = 0f;
-
-        foreach (var completedOrder in completedOrders)
+        if (uiManager)
         {
-            totalMoney += completedOrder.Price;
+            UIManager.totalMoney += price;  // Update the total money in UIManager
+            uiManager.UpdateTotalMoneyText();  // Update the UI text
         }
 
-        if (uiManager != null)
-        {
-            uiManager.UpdateTotalMoneyText(totalMoney);  
-        }
-
-        Debug.Log($"Total Money Earned So Far: {totalMoney}");
+        //PrintCompletedOrdersAndTotalMoney();
     }
 
     GameObject GetAvailableLastWaypoint()
@@ -319,5 +324,30 @@ public class NPCBehavior : MonoBehaviour
     {
         get { return orderPlaced; }
         set { orderPlaced = value; }
+    }
+
+    private void CancelOrder()
+    {
+        if (customerOrderManager != null)
+        {
+            customerOrderManager.RemoveOrder(expectedPotionTag);
+        }
+
+        if (uiManager)
+        {
+            UIManager.totalMoney -= angerPenalty;  // Update the total money in UIManager
+            uiManager.UpdateTotalMoneyText();  // Update the UI text
+        }
+
+        if (currentLastWaypoint != null)
+        {
+            Debug.Log($"Freeing LastWaypoint: {currentLastWaypoint.name}");
+            lastWaypointStatus[currentLastWaypoint] = false;
+            currentLastWaypoint = null;
+        }
+
+        returningToFirstWaypoint = true;
+        movingToLastWaypoint = false;
+        orderPlaced = false;
     }
 }
