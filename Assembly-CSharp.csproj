@@ -61,12 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CustomerOrderManager.cs" />
+    <Compile Include="Assets\Scripts\PotionTable.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement2.cs" />
-    <Compile Include="Assets\New Folder\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MeowSound.cs" />
     <Compile Include="Assets\Scripts\LevelTimer.cs" />
     <Compile Include="Assets\Scripts\PlayerPotionHandler.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\NPCBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>

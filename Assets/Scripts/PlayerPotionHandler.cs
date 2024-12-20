@@ -7,19 +7,17 @@ public class PlayerPotionHandler : MonoBehaviour
     public float interactionRange = 2.0f;
     public Transform holdPosition;
     private GameObject heldPotion;
-    private int originalLayer;             
-    private bool canPickup = true;          // Cooldown for potion pickup
+    private int originalLayer;
+    private bool canPickup = true;         
 
-    // Prefabs for combinations
     public GameObject potion_4Prefab;
     public GameObject potion_5Prefab;
     public GameObject potion_6Prefab;
     public GameObject potion_7Prefab;
 
-    // Input key for THIS player
     public KeyCode interactKey = KeyCode.E; // default will be E
 
-    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); // all potions already picked up
+    private static HashSet<GameObject> takenPotions = new HashSet<GameObject>(); 
 
     void Update()
     {
@@ -110,17 +108,15 @@ public class PlayerPotionHandler : MonoBehaviour
         originalLayer = heldPotion.layer;
         heldPotion.layer = LayerMask.NameToLayer("IgnorePickup");
 
-        // disable phys
+        // disable physics
         Rigidbody potionRb = heldPotion.GetComponent<Rigidbody>();
         if (potionRb != null)
         {
             potionRb.isKinematic = true;
         }
 
-        takenPotions.Add(heldPotion); // mark as taken
         Debug.Log("Picked up potion: " + heldPotion.name);
-
-        canPickup = false;  // prevent another pickup
+        canPickup = false; // prevent another pickup
         StartCoroutine(ResetPickupCooldown());
     }
 
@@ -132,6 +128,17 @@ public class PlayerPotionHandler : MonoBehaviour
 
     void PlacePotionOnTableOrCombine()
     {
+        // check if there is a nearby NPC with an active order
+        NPCBehavior npc = FindNearbyNPCWithActiveOrder();
+        Debug.Log("AFTER TRYING TO FIND NPC WITH ACTIVE ORDER");
+
+        if (npc != null && npc.CheckIfOrderCompleted(heldPotion))
+        {
+            Debug.Log("Order completed by placing the correct potion!");
+            Destroy(heldPotion);
+            return; // order completed
+        }
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);
         Transform closestPotionPlace = null;
         float closestDistance = Mathf.Infinity;
@@ -264,9 +271,28 @@ public class PlayerPotionHandler : MonoBehaviour
 
             heldPotion.layer = originalLayer;
 
-            takenPotions.Remove(heldPotion); // Mark the potion as no longer taken
+            takenPotions.Remove(heldPotion); // mark potion not taken
             Debug.Log("Dropped potion: " + heldPotion.name);
             heldPotion = null;
         }
     }
+
+    NPCBehavior FindNearbyNPCWithActiveOrder()
+    {
+        NPCBehavior[] npcs = FindObjectsOfType<NPCBehavior>();
+
+        foreach (var npc in npcs)
+        {
+            // calculate distance to see if nearby
+            float distanceToNPC = Vector3.Distance(transform.position, npc.transform.position);
+
+            if (npc != null && npc.OrderPlaced && distanceToNPC <= interactionRange)
+            {
+                return npc;  
+            }
+        }
+
+        return null; 
+    }
+
 }
