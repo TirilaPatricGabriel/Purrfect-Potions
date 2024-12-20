@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelTimer : MonoBehaviour
 {
-    [SerializeField] float levelDuration = 300f; // level duration in seconds
+    [SerializeField] float levelDuration = 180f;
     private float timer;
     private bool isTimeUp = false;
 
@@ -43,7 +44,14 @@ public class LevelTimer : MonoBehaviour
             player.GetComponent<PlayerMovement>().enabled = false;
         }
 
-        Debug.Log("Time's up!");
+        Debug.Log("LEVEL ENDED");
+
+        LoadNextScene();
+    }
+
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene("EndingLevelScene");
     }
 
     void UpdateTimerText()
@@ -54,4 +62,3 @@ public class LevelTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
-

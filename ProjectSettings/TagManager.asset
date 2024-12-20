@@ -27,6 +27,7 @@ TagManager:
   - PotionTable8
   - TablePotionPlace
   - TotalMoney
+  - NPCSpawner
   layers:
   - Default
   - TransparentFX

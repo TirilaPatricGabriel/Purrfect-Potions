@@ -73,7 +73,7 @@ public class PlayerPotionHandler : MonoBehaviour
 
         if (potionOnTable != null)
         {
-            Debug.Log("Picking up potion from the table: " + potionOnTable.name);
+            Debug.Log("picking up potion from the table: " + potionOnTable.name);
             PickUpPotion(potionOnTable);
         }
         else
@@ -115,7 +115,7 @@ public class PlayerPotionHandler : MonoBehaviour
             potionRb.isKinematic = true;
         }
 
-        Debug.Log("Picked up potion: " + heldPotion.name);
+        Debug.Log("picked up potion: " + heldPotion.name);
         canPickup = false; // prevent another pickup
         StartCoroutine(ResetPickupCooldown());
     }
@@ -134,7 +134,7 @@ public class PlayerPotionHandler : MonoBehaviour
 
         if (npc != null && npc.CheckIfOrderCompleted(heldPotion))
         {
-            Debug.Log("Order completed by placing the correct potion!");
+            Debug.Log("order completed by placing the correct potion!");
             Destroy(heldPotion);
             return; // order completed
         }
@@ -272,7 +272,7 @@ public class PlayerPotionHandler : MonoBehaviour
             heldPotion.layer = originalLayer;
 
             takenPotions.Remove(heldPotion); // mark potion not taken
-            Debug.Log("Dropped potion: " + heldPotion.name);
+            Debug.Log("dropped potion: " + heldPotion.name);
             heldPotion = null;
         }
     }
