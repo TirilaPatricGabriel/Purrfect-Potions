@@ -735,7 +735,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -755,11 +761,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6fd364c1-8897-4c1e-87bb-e4bac616e9c3
+  cloudProjectId: 049b3338-850f-40ab-bfa4-3320b557d692
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Purrfect Potions
-  organizationId: tirilapatric
+  organizationId: ghebis
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
