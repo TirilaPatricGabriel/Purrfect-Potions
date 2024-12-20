@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using TMPro;
+using System.Collections.Generic;
 
 public class CustomerOrderManager : MonoBehaviour
 {
@@ -11,30 +10,23 @@ public class CustomerOrderManager : MonoBehaviour
     private List<GameObject> activeOrders = new List<GameObject>(); 
     private const int MaxOrders = 3; 
 
-    void Start()
-    {
-        CustomerOrderManager customerOrderManager = GetComponent<CustomerOrderManager>();
-    }
-
-
-    // add a new order to the list
-    public void AddOrder(string orderText)
+    public void AddOrder(string orderText, float price)
     {
         if (activeOrders.Count >= MaxOrders)
         {
-            RemoveOldestOrder();
+            RemoveOldestOrder(); 
         }
 
         GameObject newOrderBox = Instantiate(orderBoxPrefab, ordersContainer);
-
         TextMeshProUGUI orderTextComponent = newOrderBox.GetComponentInChildren<TextMeshProUGUI>();
+
         if (orderTextComponent == null)
         {
-            Debug.LogError("ERROR no ordertextcomponent!");
+            Debug.LogError("ERROR: No orderTextComponent found in the orderBoxPrefab!");
             return;
         }
 
-        orderTextComponent.text = orderText;
+        orderTextComponent.text = $"{orderText} - Price: ${price}"; 
 
         activeOrders.Add(newOrderBox);
     }
@@ -45,19 +37,33 @@ public class CustomerOrderManager : MonoBehaviour
         if (activeOrders.Count > 0)
         {
             GameObject oldestOrder = activeOrders[0];
-            activeOrders.RemoveAt(0);
-            Destroy(oldestOrder);
+            activeOrders.RemoveAt(0); 
+            Destroy(oldestOrder); 
         }
     }
 
-    public void RemoveLastOrder()
+    public void RemoveOrder(string orderText)
     {
-        if (activeOrders.Count > 0)
+        foreach (var orderUI in activeOrders)
         {
-            GameObject lastOrder = activeOrders[activeOrders.Count - 1];
-            activeOrders.RemoveAt(activeOrders.Count - 1);
-            Destroy(lastOrder);
+            TextMeshProUGUI orderTextComponent = orderUI.GetComponentInChildren<TextMeshProUGUI>();
+
+            if (orderTextComponent != null)
+            {
+                string orderTextComponentText = orderTextComponent.text.Split('(')[0].Trim(); 
+
+                Debug.Log("Checking order: " + orderTextComponentText);  
+
+                if (orderTextComponentText == orderText)
+                {
+                    activeOrders.Remove(orderUI);
+                    Destroy(orderUI); 
+                    Debug.Log("Removed Order from UI: " + orderText);
+                    break;
+                }
+            }
         }
     }
+
 
 }

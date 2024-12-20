@@ -17,6 +17,16 @@ TagManager:
   - Waypoint
   - LastWaypoint
   - FirstWaypoint
+  - PotionTable
+  - PotionTable2
+  - PotionTable3
+  - PotionTable4
+  - PotionTable5
+  - PotionTable6
+  - PotionTable7
+  - PotionTable8
+  - TablePotionPlace
+  - TotalMoney
   layers:
   - Default
   - TransparentFX
