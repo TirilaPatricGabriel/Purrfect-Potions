@@ -47,6 +47,6 @@ public class PotionTable : MonoBehaviour
 
         // spawn new potion and make it current potion
         currentPotion = Instantiate(potionPrefab, tablePotionPlace.position, tablePotionPlace.rotation, tablePotionPlace);
-        Debug.Log($"Spawned potion {currentPotion.name} at {tablePotionPlace.position}");
+        Debug.Log($"spawned potion {currentPotion.name} at {tablePotionPlace.position}");
     }
 }

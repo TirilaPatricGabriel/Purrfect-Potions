@@ -64,6 +64,13 @@ public class NPCBehavior : MonoBehaviour
             Debug.LogError("UIManager not found in the scene!");
         }
 
+        customerOrderManager = FindObjectOfType<CustomerOrderManager>();
+
+        if (customerOrderManager == null)
+        {
+            Debug.LogError("CustomerOrderManager not found in the scene!");
+        }
+
         animator = GetComponent<Animator>();
 
         // sort by x waypoints
@@ -81,7 +88,7 @@ public class NPCBehavior : MonoBehaviour
             if (!lastWaypointStatus.ContainsKey(lastWaypoint))
             {
                 lastWaypointStatus.Add(lastWaypoint, false); // unoccupied
-                Debug.Log($"Initialized LastWaypoint: {lastWaypoint.name} at Position: {lastWaypoint.transform.position}");
+                Debug.Log($"init LastWaypoint: {lastWaypoint.name} at pos: {lastWaypoint.transform.position}");
             }
         }
 
@@ -114,7 +121,7 @@ public class NPCBehavior : MonoBehaviour
                     {
                         currentLastWaypoint = availableLastWaypoint;
                         lastWaypointStatus[availableLastWaypoint] = true; // occupy
-                        Debug.Log($"Assigned NPC to LastWaypoint: {currentLastWaypoint.name}");
+                        Debug.Log($"assigned NPC to LastWaypoint: {currentLastWaypoint.name}");
                     }
                     else
                     {
@@ -135,7 +142,6 @@ public class NPCBehavior : MonoBehaviour
                 if (Vector3.Distance(transform.position, currentLastWaypoint.transform.position) < 0.1f)
                 {
                     waitTime += Time.deltaTime;
-                    Debug.Log("WAIT TIME:" + waitTime);
                     if (waitTime >= angerThreshold)
                     {
                         CancelOrder();
@@ -155,7 +161,7 @@ public class NPCBehavior : MonoBehaviour
         animator.SetBool("isWalking", false);
 
         var (orderText, price) = AddRandomOrder();
-        Debug.Log($"Order Placed: {orderText} | Price: {price}");
+        Debug.Log($"order placed: {orderText} | Price: {price}");
     }
 
     private (string, float) AddRandomOrder()
@@ -184,17 +190,10 @@ public class NPCBehavior : MonoBehaviour
     {
         if (orderPlaced && droppedPotion.tag == expectedPotionTag)
         {
-            Debug.Log("Correct potion dropped! Completing order...");
-
-            Debug.Log("EXPECTED POTION TAG:" + expectedPotionTag);
-
             foreach (var recipe in potionRecipes.Values)
             {
                 if (droppedPotion.tag == recipe.result)
                 {
-                    Debug.Log("Correct potion dropped! Completing order...");
-                    Debug.Log("EXPECTED POTION RESULT: " + recipe.result);
-
                     CompleteOrder(droppedPotion.name, droppedPotion.tag, recipe.price);
                     return true;  
                 }
@@ -214,7 +213,7 @@ public class NPCBehavior : MonoBehaviour
 
         if (currentLastWaypoint != null)
         {
-            Debug.Log($"Freeing LastWaypoint: {currentLastWaypoint.name}");
+            Debug.Log($"freeing LastWaypoint: {currentLastWaypoint.name}");
             lastWaypointStatus[currentLastWaypoint] = false;
             currentLastWaypoint = null;
         }
@@ -229,15 +228,15 @@ public class NPCBehavior : MonoBehaviour
     private void SaveCompletedOrder(string orderText, float price)
     {
         completedOrders.Add(new CompletedOrder(orderText, price));  
-        Debug.Log($"Order Completed: {orderText} | Price: {price}");
+        Debug.Log($"order completed: {orderText} | price: {price}");
 
         if (uiManager)
         {
-            UIManager.totalMoney += price;  // Update the total money in UIManager
-            uiManager.UpdateTotalMoneyText();  // Update the UI text
+            UIManager.totalMoney += price; 
+            uiManager.UpdateTotalMoneyText();
+            uiManager.OrderCompletedOrCanceled();
         }
 
-        //PrintCompletedOrdersAndTotalMoney();
     }
 
     GameObject GetAvailableLastWaypoint()
@@ -335,13 +334,14 @@ public class NPCBehavior : MonoBehaviour
 
         if (uiManager)
         {
-            UIManager.totalMoney -= angerPenalty;  // Update the total money in UIManager
-            uiManager.UpdateTotalMoneyText();  // Update the UI text
+            UIManager.totalMoney -= angerPenalty;  
+            uiManager.UpdateTotalMoneyText();
+            uiManager.OrderCompletedOrCanceled();
         }
 
         if (currentLastWaypoint != null)
         {
-            Debug.Log($"Freeing LastWaypoint: {currentLastWaypoint.name}");
+            Debug.Log($"freeing LastWaypoint: {currentLastWaypoint.name}");
             lastWaypointStatus[currentLastWaypoint] = false;
             currentLastWaypoint = null;
         }
