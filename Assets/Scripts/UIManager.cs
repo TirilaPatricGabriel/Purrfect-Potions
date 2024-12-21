@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("total money text not assigned in UIManager.");
         }
     }
-
+    
     public static void AddMoney(float amount)
     {
         totalMoney += amount;
@@ -38,4 +38,19 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("npc prefab or spawn location not assigned in UIManager.");
         }
     }
+
+   public void EndLevel()
+    {
+        int currentLevelIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        int nextLevelIndex = currentLevelIndex + 1;
+
+        PlayerPrefs.SetFloat("TotalMoney", totalMoney);
+        PlayerPrefs.SetInt("NextLevelIndex", nextLevelIndex);
+        PlayerPrefs.Save();
+
+    
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndingLevelScene");
+    }
+
+
 }
