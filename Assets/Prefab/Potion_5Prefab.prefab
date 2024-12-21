@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3088644925733398100}
   - component: {fileID: 5644015432924530771}
   - component: {fileID: 5207506603933441200}
+  - component: {fileID: 8779860052313728129}
   m_Layer: 0
   m_Name: Sphere.004
   m_TagString: Potion_5
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8779860052313728129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638031602112952037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc2fb94daf77e64cb269526073d23d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decayTime: 10
+  spoiledPotionPrefab: {fileID: 8285375875717024085, guid: 532a0d121f72956459ce95694889f195, type: 3}
 --- !u!1 &4993198104324698711
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +110,7 @@ GameObject:
   - component: {fileID: 8798544323588890540}
   - component: {fileID: 2299687482623050606}
   - component: {fileID: 7473246654209481625}
+  - component: {fileID: 4441894111255608945}
   m_Layer: 0
   m_Name: Potion_5Prefab
   m_TagString: Potion_5
@@ -210,6 +226,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &4441894111255608945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993198104324698711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc2fb94daf77e64cb269526073d23d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decayTime: 10
+  spoiledPotionPrefab: {fileID: 8285375875717024085, guid: 532a0d121f72956459ce95694889f195, type: 3}
 --- !u!1 &5259797539253486048
 GameObject:
   m_ObjectHideFlags: 0
