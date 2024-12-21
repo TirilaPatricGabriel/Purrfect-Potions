@@ -62,7 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CustomerOrderManager.cs" />
     <Compile Include="Assets\Scripts\PotionTable.cs" />
+    <Compile Include="Assets\Scripts\EndingLevel.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement2.cs" />
+    <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MeowSound.cs" />
     <Compile Include="Assets\Scripts\LevelTimer.cs" />

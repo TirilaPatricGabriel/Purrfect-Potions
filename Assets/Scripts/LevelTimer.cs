@@ -46,6 +46,13 @@ public class LevelTimer : MonoBehaviour
 
         Debug.Log("LEVEL ENDED");
 
+        
+        UIManager uiManager = FindObjectOfType<UIManager>();
+        if (uiManager != null)
+        {
+            uiManager.EndLevel(); 
+        }
+
         LoadNextScene();
     }
 
