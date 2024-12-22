@@ -62,7 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0d4b24981836dd147954a169323fcdc7, type: 3}
       propertyPath: m_Name
-      value: potiunesferastricata
+      value: Potion_4Spoiled
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d4b24981836dd147954a169323fcdc7, type: 3}
+      propertyPath: m_TagString
+      value: Potion_4Spoiled
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -50,9 +50,10 @@ public class CustomerOrderManager : MonoBehaviour
 
             if (orderTextComponent != null)
             {
-                string orderTextComponentText = orderTextComponent.text.Split('(')[0].Trim(); 
+                string orderTextComponentText = orderTextComponent.text.Split('-')[0].Trim();
 
-                Debug.Log("checking order: " + orderTextComponentText);  
+                Debug.Log("checking order: " + orderTextComponentText);
+                Debug.Log("checking order text: " + orderText);
 
                 if (orderTextComponentText == orderText)
                 {

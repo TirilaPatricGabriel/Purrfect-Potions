@@ -28,6 +28,18 @@ TagManager:
   - TablePotionPlace
   - TotalMoney
   - NPCSpawner
+  - Potion_8
+  - Potion_9
+  - Potion_10
+  - Potion_11
+  - Potion_12
+  - Potion_13
+  - Potion_14
+  - Potion_5Spoiled
+  - Potion_2Spoiled
+  - Potion_3Spoiled
+  - Potion_4Spoiled
+  - Cauldron
   layers:
   - Default
   - TransparentFX
