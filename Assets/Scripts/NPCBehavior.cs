@@ -25,7 +25,7 @@ public class NPCBehavior : MonoBehaviour
 
     // anger
     private float waitTime = 0f;
-    private const float angerThreshold = 10f; // 10 sec
+    private float angerThreshold = 20f;
     private const float angerPenalty = 10f; // $10
 
     public CustomerOrderManager customerOrderManager;
@@ -44,20 +44,17 @@ public class NPCBehavior : MonoBehaviour
 
     private static List<CompletedOrder> completedOrders = new List<CompletedOrder>();
 
-    private static Dictionary<string, (string result, float price)> potionRecipes = new Dictionary<string, (string, float)>
-    {
-        { "Potion+Potion_2", ("Potion_4", 10f) },
-        { "Potion+Potion_3", ("Potion_5", 15f) },
-        { "Potion_2+Potion_3", ("Potion", 20f) },
-        { "Potion_4+Potion_6", ("Potion_2", 30f) }
-    };
-
+    private static Dictionary<string, (string result, float price)> potionRecipes;
     private Quaternion lastRotation;
     private string expectedPotionTag;
 
     void Start()
     {
+        InitializePotionRecipes();
+
         uiManager = FindObjectOfType<UIManager>();
+
+        angerThreshold = Random.Range(20f, 50f);
 
         if (uiManager == null)
         {
@@ -93,6 +90,23 @@ public class NPCBehavior : MonoBehaviour
         }
 
         lastRotation = transform.rotation;
+    }
+
+    void InitializePotionRecipes()
+    {
+        potionRecipes = new Dictionary<string, (string result, float price)>();
+
+        for (int i = 1; i <= 14; i++)
+        {
+            string resultTag = i == 1 ? "Potion" : $"Potion_{i}";
+
+            float price = i * 5f;
+
+            if (!potionRecipes.ContainsKey(resultTag))
+            {
+                potionRecipes[resultTag] = (resultTag, price);
+            }
+        }
     }
 
     void Update()
@@ -173,8 +187,8 @@ public class NPCBehavior : MonoBehaviour
 
         (string result, float price) = randomRecipe.Value;
 
-        string[] components = randomRecipe.Key.Split('+');
-        string orderText = $"{result} ({components[0]} + {components[1]})";  
+        //string[] components = randomRecipe.Key.Split('+');
+        string orderText = $"{result}";  
 
         customerOrderManager.AddOrder(orderText, price);  
 
