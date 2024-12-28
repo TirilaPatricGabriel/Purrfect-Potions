@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     public float speed = 30f;
     public float jumpForce = 12f;
@@ -11,6 +11,16 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private float movementThreshold = 0.1f;
     private float rotationSpeed = 10f; 
+
+    public void LoadData(GameData data)
+    {
+        transform.position = data.firstPlayerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.firstPlayerPosition = transform.position;
+    }
 
     void Start()
     {

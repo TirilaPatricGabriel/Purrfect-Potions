@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI totalMoneyText;
     public static float totalMoney = 0f;
@@ -10,8 +10,8 @@ public class UIManager : MonoBehaviour
     public GameObject npcPrefab;
     public Transform npcSpawnLocation;
 
-    public GameObject achievementPanel; 
-    public TextMeshProUGUI achievementText; 
+    public GameObject achievementPanel;
+    public TextMeshProUGUI achievementText;
     private Queue<string> achievementQueue = new Queue<string>();
     private bool showingAchievement = false;
 
@@ -21,6 +21,21 @@ public class UIManager : MonoBehaviour
         (120, "Achievement Unlocked: Moneybags!"),
         (300, "Achievement Unlocked: Tycoon!")
     };
+
+    private HashSet<string> unlockedAchievements = new HashSet<string>();
+
+    public void LoadData(GameData data)
+    {
+        totalMoney = data.goldEarned;
+        unlockedAchievements = new HashSet<string>(data.unlockedAchievements);
+        UpdateTotalMoneyText();
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.goldEarned = totalMoney;
+        data.unlockedAchievements = new List<string>(unlockedAchievements);
+    }
 
     public void UpdateTotalMoneyText()
     {
@@ -56,13 +71,7 @@ public class UIManager : MonoBehaviour
 
     public void EndLevel()
     {
-        int currentLevelIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        int nextLevelIndex = currentLevelIndex + 1;
-
-        PlayerPrefs.SetFloat("TotalMoney", totalMoney);
-        PlayerPrefs.SetInt("NextLevelIndex", nextLevelIndex);
-        PlayerPrefs.Save();
-
+        // Save the data (handled externally by a Data Persistence Manager if needed)
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndingLevelScene");
     }
 
@@ -70,14 +79,10 @@ public class UIManager : MonoBehaviour
     {
         foreach (var achievement in achievements)
         {
-            PlayerPrefs.DeleteKey(achievement.achievementMessage); // WIP - Work In Progress
-
-            if (totalMoney >= achievement.moneyThreshold && !PlayerPrefs.HasKey(achievement.achievementMessage))
+            if (totalMoney >= achievement.moneyThreshold && !unlockedAchievements.Contains(achievement.achievementMessage))
             {
                 achievementQueue.Enqueue(achievement.achievementMessage);
-
-                PlayerPrefs.SetInt(achievement.achievementMessage, 1); 
-                PlayerPrefs.Save();
+                unlockedAchievements.Add(achievement.achievementMessage);
             }
         }
 
@@ -105,27 +110,12 @@ public class UIManager : MonoBehaviour
 
     public List<string> GetUnlockedAchievements()
     {
-        List<string> unlockedAchievements = new List<string>();
-
-        foreach (var achievement in achievements)
-        {
-            if (PlayerPrefs.HasKey(achievement.achievementMessage))
-            {
-                unlockedAchievements.Add(achievement.achievementMessage);
-            }
-        }
-
-        return unlockedAchievements;
+        return new List<string>(unlockedAchievements);
     }
 
     public void ClearAchievements()
     {
-        foreach (var achievement in achievements)
-        {
-            PlayerPrefs.DeleteKey(achievement.achievementMessage);
-        }
-        PlayerPrefs.Save();
-
+        unlockedAchievements.Clear();
         Debug.Log("All achievements cleared.");
     }
 }
