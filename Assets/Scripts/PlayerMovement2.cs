@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement2 : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour, IDataPersistence
 {
     public float movementSpeed = 20f;
     public float jumpPower = 10f;
@@ -11,6 +11,16 @@ public class PlayerMovement2 : MonoBehaviour
     private Animator animator;
     private float movementThreshold = 0.1f;
     private float rotationSpeed = 10f; 
+
+    public void LoadData(GameData data)
+    {
+        transform.position = data.secondPlayerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.secondPlayerPosition = transform.position;
+    }
 
     void Start()
     {
