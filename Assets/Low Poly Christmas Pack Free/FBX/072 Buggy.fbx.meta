@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: dc04591551e02489493b434f846e1bf9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Lowpoly_Christmas_Pack_072:group1
+    100004: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube1
+    100006: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube10
+    100008: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube11
+    100010: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube12
+    100012: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube13
+    100014: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube14
+    100016: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube15
+    100018: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube16
+    100020: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube17
+    100022: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube18
+    100024: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube19
+    100026: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube2
+    100028: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube20
+    100030: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube21
+    100032: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube22
+    100034: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube23
+    100036: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube24
+    100038: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube3
+    100040: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube4
+    100042: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube5
+    100044: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube6
+    100046: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube7
+    100048: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube8
+    100050: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube9
+    100052: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform1
+    100054: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform10
+    100056: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform11
+    100058: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform12
+    100060: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform13
+    100062: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform14
+    100064: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform15
+    100066: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform16
+    100068: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform17
+    100070: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform18
+    100072: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform19
+    100074: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform2
+    100076: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform20
+    100078: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform21
+    100080: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform22
+    100082: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform23
+    100084: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform3
+    100086: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform4
+    100088: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform5
+    100090: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform6
+    100092: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform7
+    100094: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform8
+    100096: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform9
+    100098: Lowpoly_Christmas_Pack_072:pCylinder1
+    100100: Lowpoly_Christmas_Pack_072:pCylinder2
+    100102: Lowpoly_Christmas_Pack_072:pCylinder3
+    100104: Lowpoly_Christmas_Pack_072:pCylinder4
+    100106: Lowpoly_Christmas_Pack_072:pCylinder5
+    100108: Lowpoly_Christmas_Pack_072:pCylinder5 1
+    100110: Lowpoly_Christmas_Pack_072:transform1
+    100112: Lowpoly_Christmas_Pack_072:transform2
+    100114: Lowpoly_Christmas_Pack_072:transform3
+    100116: Lowpoly_Christmas_Pack_072:transform4
+    100118: Lowpoly_Christmas_Pack_072:transform5
+    100120: Lowpoly_Christmas_Pack_072:transform6
+    100122: Lowpoly_Christmas_Pack_072:transform7
+    100124: pCylinder5
+    400000: //RootNode
+    400002: Lowpoly_Christmas_Pack_072:group1
+    400004: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube1
+    400006: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube10
+    400008: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube11
+    400010: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube12
+    400012: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube13
+    400014: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube14
+    400016: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube15
+    400018: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube16
+    400020: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube17
+    400022: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube18
+    400024: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube19
+    400026: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube2
+    400028: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube20
+    400030: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube21
+    400032: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube22
+    400034: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube23
+    400036: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube24
+    400038: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube3
+    400040: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube4
+    400042: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube5
+    400044: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube6
+    400046: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube7
+    400048: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube8
+    400050: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:pCube9
+    400052: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform1
+    400054: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform10
+    400056: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform11
+    400058: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform12
+    400060: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform13
+    400062: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform14
+    400064: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform15
+    400066: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform16
+    400068: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform17
+    400070: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform18
+    400072: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform19
+    400074: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform2
+    400076: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform20
+    400078: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform21
+    400080: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform22
+    400082: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform23
+    400084: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform3
+    400086: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform4
+    400088: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform5
+    400090: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform6
+    400092: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform7
+    400094: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform8
+    400096: Lowpoly_Christmas_Pack_072:Lowpoly_Christmas_Pack_071:Lowpoly_Christmas_Pack_070:transform9
+    400098: Lowpoly_Christmas_Pack_072:pCylinder1
+    400100: Lowpoly_Christmas_Pack_072:pCylinder2
+    400102: Lowpoly_Christmas_Pack_072:pCylinder3
+    400104: Lowpoly_Christmas_Pack_072:pCylinder4
+    400106: Lowpoly_Christmas_Pack_072:pCylinder5
+    400108: Lowpoly_Christmas_Pack_072:pCylinder5 1
+    400110: Lowpoly_Christmas_Pack_072:transform1
+    400112: Lowpoly_Christmas_Pack_072:transform2
+    400114: Lowpoly_Christmas_Pack_072:transform3
+    400116: Lowpoly_Christmas_Pack_072:transform4
+    400118: Lowpoly_Christmas_Pack_072:transform5
+    400120: Lowpoly_Christmas_Pack_072:transform6
+    400122: Lowpoly_Christmas_Pack_072:transform7
+    400124: pCylinder5
+    2100000: Lowpoly_Christmas_Pack_072_Lowpoly_Christmas_Pack_071_Lowpoly_Christmas_Pack_070_phong1
+    2300000: Lowpoly_Christmas_Pack_072:pCylinder5
+    3300000: Lowpoly_Christmas_Pack_072:pCylinder5
+    4300000: Lowpoly_Christmas_Pack_072:pCylinder5
+    6400000: Lowpoly_Christmas_Pack_072:pCylinder5
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
