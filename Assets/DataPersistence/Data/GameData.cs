@@ -8,6 +8,7 @@ public class GameData
     public Vector3 firstPlayerPosition;
     public Vector3 secondPlayerPosition;
     public float goldEarned;
+    public float levelDuration;
     public List<string> unlockedAchievements = new List<string>();
 
     public void Start()
@@ -16,5 +17,6 @@ public class GameData
         firstPlayerPosition = new Vector3(34.8f, 4.2464f, -25.91f);
         secondPlayerPosition = new Vector3(43.8f, 4.2464f, -0.1f);
         unlockedAchievements = new List<string>();
+        levelDuration = 0;
     }
 }

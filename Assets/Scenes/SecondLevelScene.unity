@@ -5913,11 +5913,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81caa4df491ffeb4aabf1cddab00f0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalMoneyText: {fileID: 0}
+  totalMoneyText: {fileID: 1616682726}
   npcPrefab: {fileID: 879584657165284886, guid: c6af7a46bbda4b846a6a6e9b79bc74ee, type: 3}
   npcSpawnLocation: {fileID: 279734408}
-  achievementPanel: {fileID: 0}
-  achievementText: {fileID: 0}
+  achievementPanel: {fileID: 33719685}
+  achievementText: {fileID: 1462614416}
 --- !u!4 &581865673
 Transform:
   m_ObjectHideFlags: 0
@@ -17233,7 +17233,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1023, y: -549}
+  m_AnchoredPosition: {x: 785, y: -367}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616682726

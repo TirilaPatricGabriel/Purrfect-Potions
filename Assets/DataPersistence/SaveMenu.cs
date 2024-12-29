@@ -6,13 +6,22 @@ public class SaveMenu : MonoBehaviour
     public Button[] saveSlotButtons; // Assign buttons in the Inspector
     public Button newGameButton;
     public GameObject saveSlotSelectionScreen; // Assign the New Game Save Slot Selection Screen in the Inspector
+    public bool isForFirstLevel = true;
 
     private void Start()
     {
         for (int i = 0; i < saveSlotButtons.Length; i++)
         {
-            int slotIndex = i; // Capture the loop variable
-            saveSlotButtons[i].onClick.AddListener(() => OnSaveSlotSelected(slotIndex));
+            if (!isForFirstLevel)
+            {
+                int slotIndex = i + 5; 
+                saveSlotButtons[i].onClick.AddListener(() => OnSaveSlotSelected(slotIndex));
+            } else
+            {
+                int slotIndex = i; 
+                saveSlotButtons[i].onClick.AddListener(() => OnSaveSlotSelected(slotIndex));
+            }
+
         }
 
         newGameButton.onClick.AddListener(OpenNewGameScreen);
@@ -24,7 +33,13 @@ public class SaveMenu : MonoBehaviour
         DataPersistenceManager.Instance.LoadGame();
         Debug.Log($"Loaded Save Slot {slotIndex + 1}");
         // Navigate to the game scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("FirstLevelScene");
+        if (!isForFirstLevel)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("SecondLevelScene");
+        } else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("FirstLevelScene");
+        }
     }
 
     private void OpenNewGameScreen()

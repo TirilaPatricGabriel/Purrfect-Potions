@@ -5,7 +5,6 @@ public class LevelManager : MonoBehaviour
 {
     public void LoadNextLevel()
     {
-        Debug.Log("LoadNextLevel called."); 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         int nextLevelIndex = PlayerPrefs.GetInt("NextLevelIndex", 1);

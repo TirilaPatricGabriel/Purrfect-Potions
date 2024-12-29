@@ -4,19 +4,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelTimer : MonoBehaviour
+public class LevelTimer : MonoBehaviour, IDataPersistence
 {
     [SerializeField] float levelDuration = 180f;
-    private float timer;
+    private float timer = -1;
     private bool isTimeUp = false;
 
     [SerializeField] GameObject player1;
     [SerializeField] GameObject player2;
     [SerializeField] TextMeshProUGUI timerText;
 
+    public void LoadData(GameData data)
+    {
+        timer = data.levelDuration;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.levelDuration = timer;
+    }
+
+
     void Start()
     {
-        timer = levelDuration;
+        if (timer <= 0)
+        {
+            timer = levelDuration;
+        }
         UpdateTimerText();
     }
 

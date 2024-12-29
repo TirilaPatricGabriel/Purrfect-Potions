@@ -13,6 +13,7 @@ public class FileDataHandler
 
     public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
     {
+        Debug.LogError(dataDirPath + ' ' + dataFileName + ' ' + useEncryption);
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
         this.useEncryption = useEncryption;

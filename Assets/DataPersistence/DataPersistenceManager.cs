@@ -7,7 +7,7 @@ using System.Linq;
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
-    [SerializeField] private List<string> fileNames = new List<string>() { "save1.game", "save2.game", "save3.game", "save4.game", "save5.game" };
+    [SerializeField] private List<string> fileNames = new List<string>() { "save1.game", "save2.game", "save3.game", "save4.game", "save5.game", "save6.game", "save7.game", "save8.game", "save9.game", "save10.game" };
     [SerializeField] private bool useEncryption;
 
     private string currentFileName;
@@ -32,7 +32,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(currentFileName))
         {
-            currentFileName = fileNames[0]; // Default to the first save slot
+            currentFileName = fileNames[0];
         }
         dataHandler = new FileDataHandler(Application.persistentDataPath, currentFileName, useEncryption);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
@@ -52,8 +52,8 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnSceneLoadedCallback(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"Scene loaded: {scene.name}");
-        dataPersistenceObjects = FindAllDataPersistenceObjects(); // Register new scene objects
-        LoadGame(); // Load game data into new objects
+        dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame(); 
     }
 
     public void NewGame()
@@ -63,9 +63,10 @@ public class DataPersistenceManager : MonoBehaviour
             goldEarned = 0,
             firstPlayerPosition = new Vector3(34.8f, 4.2464f, -25.91f),
             secondPlayerPosition = new Vector3(43.8f, 4.2464f, -0.1f),
-            unlockedAchievements = new List<string>()
+            unlockedAchievements = new List<string>(),
+            levelDuration = 180,
         };
-        SaveGame(); // Immediately save the new game state
+        SaveGame(); 
         Debug.Log("New game started and saved.");
     }
 
@@ -75,7 +76,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (gameData == null)
         {
             Debug.Log("No data found. Starting a new game.");
-            NewGame(); // Start a new game if no data is found
+            NewGame();
             return;
         }
 
@@ -117,6 +118,7 @@ public class DataPersistenceManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Invalid save slot index.");
+
         }
     }
 
@@ -135,6 +137,6 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame(); // Save the game when the application quits
+        SaveGame();
     }
 }
