@@ -12,6 +12,6 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log(currentSceneIndex);
         SceneManager.LoadScene(nextLevelIndex);
-       // SceneManager.LoadScene("SecondLevelScene");
+        SceneManager.LoadScene("SecondLevelScene");
     }
 }

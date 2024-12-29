@@ -10,7 +10,8 @@ public class LevelTimer : MonoBehaviour
     private float timer;
     private bool isTimeUp = false;
 
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject player1;
+    [SerializeField] GameObject player2;
     [SerializeField] TextMeshProUGUI timerText;
 
     void Start()
@@ -39,9 +40,14 @@ public class LevelTimer : MonoBehaviour
     {
         isTimeUp = true;
 
-        if (player != null)
+        if (player1 != null)
         {
-            player.GetComponent<PlayerMovement>().enabled = false;
+            player1.GetComponent<PlayerMovement>().enabled = false;
+        }
+
+        if (player2 != null)
+        {
+            player2.GetComponent<PlayerMovement2>().enabled = false;
         }
 
         Debug.Log("LEVEL ENDED");
