@@ -204,6 +204,7 @@ public class PlayerPotionHandler : MonoBehaviour
         // check if player has spoiled potion and if so, check if cauldron is nearby
         if (IsCauldronNearby())
         {
+            Debug.LogError("CAULDRON IS NEARBY WHAT IS NOT WORKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGgWRWRAWRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
             Debug.Log("potion in cauldron");
             Destroy(heldPotion);
             heldPotion = null;

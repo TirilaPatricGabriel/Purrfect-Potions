@@ -355,6 +355,8 @@ MonoBehaviour:
   totalMoneyText: {fileID: 1824095694}
   npcPrefab: {fileID: 0}
   npcSpawnLocation: {fileID: 0}
+  achievementPanel: {fileID: 0}
+  achievementText: {fileID: 0}
 --- !u!1 &332217050
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play next level
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a83553f243e73c43a75bed5a3f90591, type: 2}
   m_sharedMaterial: {fileID: 6358269884818871849, guid: 4a83553f243e73c43a75bed5a3f90591, type: 2}
@@ -768,7 +770,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 332217051}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1716,31 +1718,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1293095130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1614031485}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1178899796}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1293095130
 MonoBehaviour:
   m_ObjectHideFlags: 0

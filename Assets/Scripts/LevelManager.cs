@@ -13,4 +13,9 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(nextLevelIndex);
         SceneManager.LoadScene("SecondLevelScene");
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

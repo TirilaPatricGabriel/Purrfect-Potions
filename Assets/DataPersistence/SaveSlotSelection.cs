@@ -4,8 +4,8 @@ using TMPro;
 
 public class SaveSlotSelection : MonoBehaviour
 {
-    public Button[] saveSlotButtons; // Assign buttons in the Inspector
-    public TextMeshProUGUI[] saveSlotLabels; // Optional: Assign TextMeshPro labels in the Inspector
+    public Button[] saveSlotButtons; 
+    public TextMeshProUGUI[] saveSlotLabels; 
     public bool isForFirstLevel = true;
 
     private void Start()
@@ -14,7 +14,7 @@ public class SaveSlotSelection : MonoBehaviour
         {
             if (!isForFirstLevel)
             {
-                int slotIndex = i + 5; // Capture the loop variable
+                int slotIndex = i + 5; 
                 saveSlotButtons[i].onClick.AddListener(() => OnSaveSlotSelected(slotIndex));
                 GameData loadedData = DataPersistenceManager.Instance?.GetLoadedData(slotIndex);
                 if (loadedData != null)
@@ -28,7 +28,7 @@ public class SaveSlotSelection : MonoBehaviour
             }
             else
             {
-                int slotIndex = i; // Capture the loop variable
+                int slotIndex = i;
                 saveSlotButtons[i].onClick.AddListener(() => OnSaveSlotSelected(slotIndex));
                 GameData loadedData = DataPersistenceManager.Instance?.GetLoadedData(slotIndex);
                 if (loadedData != null)
@@ -46,12 +46,10 @@ public class SaveSlotSelection : MonoBehaviour
 
     public void OnSaveSlotSelected(int slotIndex)
     {
-        // Set the save slot in DataPersistenceManager
         DataPersistenceManager.Instance.SetSaveSlot(slotIndex);
 
-        // Start a new game immediately
+        // start new game
         DataPersistenceManager.Instance.NewGame();
-        Debug.Log($"Started a new game on Slot {slotIndex + 1}");
         if (!isForFirstLevel)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("SecondLevelScene");

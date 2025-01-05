@@ -21,11 +21,11 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject); // Destroy duplicate instance
+            Destroy(this.gameObject); 
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(this.gameObject); // Persist across scenes
+        DontDestroyOnLoad(this.gameObject); // persistence accross scenes
     }
 
     private void Start()
@@ -67,7 +67,6 @@ public class DataPersistenceManager : MonoBehaviour
             levelDuration = 180,
         };
         SaveGame(); 
-        Debug.Log("New game started and saved.");
     }
 
     public void LoadGame()
@@ -75,7 +74,6 @@ public class DataPersistenceManager : MonoBehaviour
         gameData = dataHandler.Load();
         if (gameData == null)
         {
-            Debug.Log("No data found. Starting a new game.");
             NewGame();
             return;
         }
@@ -85,7 +83,6 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
 
-        Debug.Log("Game data loaded successfully.");
     }
 
     public void SaveGame()
@@ -95,15 +92,12 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.SaveData(ref gameData);
         }
 
-        Debug.Log($"Saving Data: Gold Earned = {gameData.goldEarned}, First Player Position = {gameData.firstPlayerPosition}");
         dataHandler.Save(gameData);
-        Debug.Log("Game successfully saved to file.");
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
-        Debug.Log($"Found {dataPersistenceObjects.Count()} data persistence objects.");
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
@@ -113,12 +107,10 @@ public class DataPersistenceManager : MonoBehaviour
         {
             currentFileName = fileNames[slotIndex];
             dataHandler = new FileDataHandler(Application.persistentDataPath, currentFileName, useEncryption);
-            Debug.Log($"Switched to save slot {slotIndex + 1} with file name: {currentFileName}");
         }
         else
         {
             Debug.LogWarning("Invalid save slot index.");
-
         }
     }
 
