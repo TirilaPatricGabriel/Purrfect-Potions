@@ -6993,6 +6993,12 @@ MonoBehaviour:
   - {fileID: 1511177694}
   - {fileID: 454319397}
   - {fileID: 515405369}
+  saveSlotLabels:
+  - {fileID: 968266037}
+  - {fileID: 886484148}
+  - {fileID: 122059471}
+  - {fileID: 950718494}
+  - {fileID: 1990019704}
   newGameButton: {fileID: 1781193218}
   saveSlotSelectionScreen: {fileID: 1324555568}
   isForFirstLevel: 0
@@ -9111,6 +9117,12 @@ MonoBehaviour:
   - {fileID: 205403906}
   - {fileID: 985814796}
   - {fileID: 235072244}
+  saveSlotLabels:
+  - {fileID: 1194839288}
+  - {fileID: 1782824303}
+  - {fileID: 368183864}
+  - {fileID: 10273020}
+  - {fileID: 435608883}
   newGameButton: {fileID: 27784131}
   saveSlotSelectionScreen: {fileID: 1632028931}
   isForFirstLevel: 1

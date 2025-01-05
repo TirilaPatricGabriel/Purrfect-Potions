@@ -30,7 +30,7 @@ public class SaveSlotSelection : MonoBehaviour
             {
                 int slotIndex = i; // Capture the loop variable
                 saveSlotButtons[i].onClick.AddListener(() => OnSaveSlotSelected(slotIndex));
-                GameData loadedData = DataPersistenceManager.Instance?.GetLoadedData(slotIndex + 5);
+                GameData loadedData = DataPersistenceManager.Instance?.GetLoadedData(slotIndex);
                 if (loadedData != null)
                 {
                     saveSlotLabels[i].text = $"Save Slot {i + 1} - Gold: {loadedData.goldEarned}";
