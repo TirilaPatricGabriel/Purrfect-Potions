@@ -63,6 +63,7 @@
     <Compile Include="Assets\DataPersistence\IDataPersistence.cs" />
     <Compile Include="Assets\DataPersistence\SaveSlotSelection.cs" />
     <Compile Include="Assets\Scripts\CustomerOrderManager.cs" />
+    <Compile Include="Assets\Scripts\Resolution\ResolutionManager.cs" />
     <Compile Include="Assets\Scripts\PotionTable.cs" />
     <Compile Include="Assets\Scripts\EndingLevel.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement2.cs" />
@@ -73,12 +74,16 @@
     <Compile Include="Assets\Scripts\LevelTimer.cs" />
     <Compile Include="Assets\Scripts\PotionScript.cs" />
     <Compile Include="Assets\Scripts\PlayerPotionHandler.cs" />
+    <Compile Include="Assets\Scripts\EscapeToMainMenu.cs" />
     <Compile Include="Assets\DataPersistence\SaveMenu.cs" />
+    <Compile Include="Assets\Scripts\FullscreenSettings.cs" />
     <Compile Include="Assets\DataPersistence\Data\GameData.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\NPCBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\DataPersistence\DataPersistenceManager.cs" />
+    <Compile Include="Assets\Scripts\VolumeController.cs" />
+    <Compile Include="Assets\Scripts\Resolution\ResolutionDropdown.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

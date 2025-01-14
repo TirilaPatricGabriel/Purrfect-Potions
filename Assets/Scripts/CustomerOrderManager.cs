@@ -22,7 +22,6 @@ public class CustomerOrderManager : MonoBehaviour
 
         if (orderTextComponent == null)
         {
-            Debug.LogError("ERROR: no orderTextComponent found in the orderBoxPrefab!");
             return;
         }
 
@@ -52,14 +51,10 @@ public class CustomerOrderManager : MonoBehaviour
             {
                 string orderTextComponentText = orderTextComponent.text.Split('-')[0].Trim();
 
-                Debug.Log("checking order: " + orderTextComponentText);
-                Debug.Log("checking order text: " + orderText);
-
                 if (orderTextComponentText == orderText)
                 {
                     activeOrders.Remove(orderUI);
                     Destroy(orderUI); 
-                    Debug.Log("removed Order from UI: " + orderText);
                     break;
                 }
             }

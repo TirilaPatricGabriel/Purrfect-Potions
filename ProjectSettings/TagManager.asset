@@ -40,6 +40,7 @@ TagManager:
   - Potion_3Spoiled
   - Potion_4Spoiled
   - Cauldron
+  - CatRotationObject
   layers:
   - Default
   - TransparentFX

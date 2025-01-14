@@ -14,9 +14,5 @@ public class EndingLevelUI : MonoBehaviour
         {
             totalMoneyText.text = $"Total Money Earned: ${totalMoney}";
         }
-        else
-        {
-            Debug.LogWarning("totalMoneyText nu este asignat în EndingLevelUI.");
-        }
     }
 }

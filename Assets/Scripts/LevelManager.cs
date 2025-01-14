@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
 
         int nextLevelIndex = PlayerPrefs.GetInt("NextLevelIndex", 1);
 
-        Debug.Log(currentSceneIndex);
         SceneManager.LoadScene(nextLevelIndex);
         SceneManager.LoadScene("SecondLevelScene");
     }

@@ -25,7 +25,7 @@ public class PlayerPotionHandler : MonoBehaviour
     public GameObject potion_13Prefab;
     public GameObject potion_14Prefab;
 
-    public KeyCode interactKey = KeyCode.E; // default will be E
+    public KeyCode interactKey = KeyCode.E; // default E
 
     private static HashSet<GameObject> takenPotions = new HashSet<GameObject>();
 
@@ -63,7 +63,7 @@ public class PlayerPotionHandler : MonoBehaviour
     {
         switch (index)
         {
-            case 1: return potionPrefab; // Base potion ("Potion")
+            case 1: return potionPrefab; 
             case 2: return potion_2Prefab;
             case 3: return potion_3Prefab;
             case 4: return potion_4Prefab;
@@ -120,10 +120,7 @@ public class PlayerPotionHandler : MonoBehaviour
 
                         foreach (Transform child in potionPlace)
                         {
-                            if ((child.CompareTag("Potion") || child.CompareTag("Potion_2") ||
-                                child.CompareTag("Potion_3") || child.CompareTag("Potion_4") ||
-                                child.CompareTag("Potion_5") || child.CompareTag("Potion_6") ||
-                                child.CompareTag("Potion_7")) && !takenPotions.Contains(child.gameObject))
+                            if ((collider.CompareTag("Potion") || collider.tag.StartsWith("Potion_")) && !takenPotions.Contains(child.gameObject))
                             {
                                 potionOnTable = child.gameObject;
                                 break;
@@ -136,7 +133,6 @@ public class PlayerPotionHandler : MonoBehaviour
 
         if (potionOnTable != null)
         {
-            Debug.Log("picking up potion from the table: " + potionOnTable.name);
             PickUpPotion(potionOnTable);
         }
         else
@@ -176,7 +172,6 @@ public class PlayerPotionHandler : MonoBehaviour
             potionRb.isKinematic = true;
         }
 
-        Debug.Log("picked up potion: " + heldPotion.name);
         canPickup = false; // prevent another pickup
         StartCoroutine(ResetPickupCooldown());
     }
@@ -191,11 +186,9 @@ public class PlayerPotionHandler : MonoBehaviour
     {
         // check if there is a nearby NPC with an active order
         NPCBehavior npc = FindNearbyNPCWithActiveOrder();
-        Debug.Log("AFTER TRYING TO FIND NPC WITH ACTIVE ORDER");
 
         if (npc != null && npc.CheckIfOrderCompleted(heldPotion))
         {
-            Debug.Log("order completed by placing the correct potion!");
             Destroy(heldPotion);
             heldPotion = null;
             return; // order completed
@@ -204,8 +197,6 @@ public class PlayerPotionHandler : MonoBehaviour
         // check if player has spoiled potion and if so, check if cauldron is nearby
         if (IsCauldronNearby())
         {
-            Debug.LogError("CAULDRON IS NEARBY WHAT IS NOT WORKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGgWRWRAWRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
-            Debug.Log("potion in cauldron");
             Destroy(heldPotion);
             heldPotion = null;
             return;
@@ -284,7 +275,6 @@ public class PlayerPotionHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("No valid potion combination found. Throwing the potion.");
             DropPotion(0);
         }
     }
@@ -322,7 +312,6 @@ public class PlayerPotionHandler : MonoBehaviour
             heldPotion.layer = originalLayer;
 
             takenPotions.Remove(heldPotion); // mark potion not taken
-            Debug.Log("dropped potion: " + heldPotion.name);
             heldPotion = null;
         }
     }

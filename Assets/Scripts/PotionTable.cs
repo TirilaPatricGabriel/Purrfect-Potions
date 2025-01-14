@@ -20,7 +20,6 @@ public class PotionTable : MonoBehaviour
 
         if (tablePotionPlace == null)
         {
-            Debug.LogError("TablePotionPlace not found in " + gameObject.name);
             return;
         }
 
@@ -32,7 +31,6 @@ public class PotionTable : MonoBehaviour
         // if potion moved, spawn another
         if (currentPotion != null && currentPotion.transform.parent != tablePotionPlace)
         {
-            Debug.Log("Potion picked up. Spawning a new one.");
             SpawnPotion(); 
         }
     }
@@ -41,12 +39,10 @@ public class PotionTable : MonoBehaviour
     {
         if (potionPrefab == null || tablePotionPlace == null)
         {
-            Debug.LogError("PotionPrefab or TablePotionPlace not set.");
             return;
         }
 
         // spawn new potion and make it current potion
         currentPotion = Instantiate(potionPrefab, tablePotionPlace.position, tablePotionPlace.rotation, tablePotionPlace);
-        Debug.Log($"spawned potion {currentPotion.name} at {tablePotionPlace.position}");
     }
 }

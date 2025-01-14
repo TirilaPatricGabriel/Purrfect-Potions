@@ -29,7 +29,7 @@ public class PlayerMovement2 : MonoBehaviour, IDataPersistence
 
         if (animator == null)
         {
-            Debug.LogWarning("Animator component is missing on Player or its children.");
+            Debug.LogWarning("Animator component is missing.");
         }
 
         rigidBody.freezeRotation = true;

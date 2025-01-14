@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour, IDataPersistence
     private Queue<string> achievementQueue = new Queue<string>();
     private bool showingAchievement = false;
 
+    public List<Texture> npcTextures;
+
     private List<(float moneyThreshold, string achievementMessage)> achievements = new List<(float, string)>
     {
         (10, "Achievement Unlocked: Halfway There!"),
@@ -43,10 +45,6 @@ public class UIManager : MonoBehaviour, IDataPersistence
         {
             totalMoneyText.text = $"Total Money: ${totalMoney}";
         }
-        else
-        {
-            Debug.LogWarning("Total money text not assigned in UIManager.");
-        }
 
         CheckAchievements();
     }
@@ -56,22 +54,42 @@ public class UIManager : MonoBehaviour, IDataPersistence
         totalMoney += amount;
     }
 
+    // spawn new npc with random texture
     public void OrderCompletedOrCanceled()
     {
         if (npcPrefab != null && npcSpawnLocation != null)
         {
-            Instantiate(npcPrefab, npcSpawnLocation.position, npcSpawnLocation.rotation);
-            Debug.Log("New NPC spawned at the designated location.");
-        }
-        else
-        {
-            Debug.LogWarning("NPC prefab or spawn location not assigned in UIManager.");
+            GameObject npcInstance = Instantiate(npcPrefab, npcSpawnLocation.position, npcSpawnLocation.rotation);
+
+            if (npcTextures != null && npcTextures.Count > 0)
+            {
+                Texture randomTexture = npcTextures[Random.Range(0, npcTextures.Count)];
+
+                Transform headTransform = npcInstance.transform.Find("Head");
+                if (headTransform != null)
+                {
+                    Renderer headRenderer = headTransform.GetComponent<Renderer>();
+                    if (headRenderer != null)
+                    {
+                        Material newMaterial = new Material(Shader.Find("Standard")); 
+                        newMaterial.mainTexture = randomTexture;
+
+                        headRenderer.material = newMaterial;
+                    }
+                }
+            }
         }
     }
 
+
     public void EndLevel()
     {
-        // Save the data (handled externally by a Data Persistence Manager if needed)
+        if (DataPersistenceManager.Instance != null)
+        {
+            DataPersistenceManager.Instance.SaveGame();
+        }
+        PlayerPrefs.SetFloat("TotalMoney", totalMoney);
+        PlayerPrefs.Save(); 
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndingLevelScene");
     }
 
@@ -116,6 +134,5 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void ClearAchievements()
     {
         unlockedAchievements.Clear();
-        Debug.Log("All achievements cleared.");
     }
 }

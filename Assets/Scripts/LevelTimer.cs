@@ -29,7 +29,7 @@ public class LevelTimer : MonoBehaviour, IDataPersistence
     {
         if (timer <= 0)
         {
-            timer = levelDuration;
+            timer = 5f;
         }
         UpdateTimerText();
     }
@@ -64,9 +64,6 @@ public class LevelTimer : MonoBehaviour, IDataPersistence
             player2.GetComponent<PlayerMovement2>().enabled = false;
         }
 
-        Debug.Log("LEVEL ENDED");
-
-        
         UIManager uiManager = FindObjectOfType<UIManager>();
         if (uiManager != null)
         {

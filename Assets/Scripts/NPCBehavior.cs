@@ -85,7 +85,6 @@ public class NPCBehavior : MonoBehaviour
             if (!lastWaypointStatus.ContainsKey(lastWaypoint))
             {
                 lastWaypointStatus.Add(lastWaypoint, false); // unoccupied
-                Debug.Log($"init LastWaypoint: {lastWaypoint.name} at pos: {lastWaypoint.transform.position}");
             }
         }
 
@@ -135,7 +134,6 @@ public class NPCBehavior : MonoBehaviour
                     {
                         currentLastWaypoint = availableLastWaypoint;
                         lastWaypointStatus[availableLastWaypoint] = true; // occupy
-                        Debug.Log($"assigned NPC to LastWaypoint: {currentLastWaypoint.name}");
                     }
                     else
                     {
@@ -175,7 +173,6 @@ public class NPCBehavior : MonoBehaviour
         animator.SetBool("isWalking", false);
 
         var (orderText, price) = AddRandomOrder();
-        Debug.Log($"order placed: {orderText} | Price: {price}");
     }
 
     private (string, float) AddRandomOrder()
@@ -227,7 +224,6 @@ public class NPCBehavior : MonoBehaviour
 
         if (currentLastWaypoint != null)
         {
-            Debug.Log($"freeing LastWaypoint: {currentLastWaypoint.name}");
             lastWaypointStatus[currentLastWaypoint] = false;
             currentLastWaypoint = null;
         }
@@ -242,7 +238,6 @@ public class NPCBehavior : MonoBehaviour
     private void SaveCompletedOrder(string orderText, float price)
     {
         completedOrders.Add(new CompletedOrder(orderText, price));  
-        Debug.Log($"order completed: {orderText} | price: {price}");
 
         if (uiManager)
         {
@@ -314,7 +309,7 @@ public class NPCBehavior : MonoBehaviour
 
         if (isMoving)
         {
-            RotateTowards(targetPosition);
+            RotateTowards(targetPosition); 
         }
     }
 
@@ -355,7 +350,6 @@ public class NPCBehavior : MonoBehaviour
 
         if (currentLastWaypoint != null)
         {
-            Debug.Log($"freeing LastWaypoint: {currentLastWaypoint.name}");
             lastWaypointStatus[currentLastWaypoint] = false;
             currentLastWaypoint = null;
         }
