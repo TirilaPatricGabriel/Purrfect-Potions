@@ -11,14 +11,12 @@ public class ResolutionManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("ResolutionManager Start called");
         ApplySavedResolution();
     }
 
     public void ApplySavedResolution()
     {
         int savedResolutionIndex = PlayerPrefs.GetInt(ResolutionKey, -1);
-        Debug.Log($"Saved Resolution Index: {PlayerPrefs.GetInt("ResolutionIndex", -1)}");
         if (savedResolutionIndex != -1)
         {
             Resolution[] resolutions = Screen.resolutions;
@@ -27,8 +25,6 @@ public class ResolutionManager : MonoBehaviour
             {
                 Resolution resolution = resolutions[savedResolutionIndex];
                 Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, resolution.refreshRateRatio);
-
-                Debug.Log($"Applied saved resolution: {resolution.width} x {resolution.height} @ {resolution.refreshRateRatio.numerator}/{resolution.refreshRateRatio.denominator}Hz");
             }
         }
         else
