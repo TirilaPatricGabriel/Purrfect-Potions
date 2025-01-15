@@ -1,29 +1,36 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 public class ResolutionDropdown : MonoBehaviour
 {
-    public Dropdown resolutionDropdown;  
-    private Resolution[] resolutions;
-    private const string ResolutionKey = "ResolutionIndex";  
+    public Dropdown resolutionDropdown;
+    private Resolution[] uniqueResolutions; 
+    private const string ResolutionKey = "ResolutionIndex";
 
     private void Start()
     {
-        resolutions = Screen.resolutions;
+        // dublicates
+        uniqueResolutions = Screen.resolutions
+            .GroupBy(r => new { r.width, r.height })
+            .Select(g => g.First())
+            .ToArray();
 
         resolutionDropdown.ClearOptions();
 
-        var options = new System.Collections.Generic.List<string>();
+        var options = new List<string>();
         int currentResolutionIndex = 0;
 
-        for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < uniqueResolutions.Length; i++)
         {
-            string resolutionOption = $"{resolutions[i].width} x {resolutions[i].height} @ {resolutions[i].refreshRateRatio.numerator}/{resolutions[i].refreshRateRatio.denominator}Hz";
+            Resolution res = uniqueResolutions[i];
+            string resolutionOption = $"{res.width} x {res.height}";
+
             options.Add(resolutionOption);
 
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height &&
-                resolutions[i].refreshRateRatio.Equals(Screen.currentResolution.refreshRateRatio))
+            if (res.width == Screen.currentResolution.width &&
+                res.height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
@@ -37,14 +44,22 @@ public class ResolutionDropdown : MonoBehaviour
 
         SetResolution(savedResolutionIndex);
 
-        resolutionDropdown.onValueChanged.AddListener(SetResolution);
+        resolutionDropdown.onValueChanged.AddListener(SetResolution); 
     }
 
     public void SetResolution(int resolutionIndex)
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, resolution.refreshRateRatio);
-        Debug.Log($"Applying resolution: {resolution.width} x {resolution.height} @ {resolution.refreshRateRatio.numerator}/{resolution.refreshRateRatio.denominator}Hz");
+        if (resolutionIndex < 0 || resolutionIndex >= uniqueResolutions.Length)
+        {
+            Debug.LogWarning("Resolution index out of bounds");
+            return;
+        }
+
+        Resolution resolution = uniqueResolutions[resolutionIndex];
+
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, resolution.refreshRate);
+
+        Debug.Log($"Applying resolution: {resolution.width} x {resolution.height} @ {resolution.refreshRate}Hz");
 
         PlayerPrefs.SetInt(ResolutionKey, resolutionIndex);
         PlayerPrefs.Save();
